@@ -6,7 +6,6 @@ local VALUE
 
 ---
 ---@enum pugixml.xml_encoding
----@operator call(integer): pugixml.xml_encoding
 local xml_encoding = {
     ---Auto-detect input encoding using BOM or < / <? detection; use UTF8 if BOM is not found
     encoding_auto = 0,
@@ -28,9 +27,5 @@ local xml_encoding = {
     ---The same encoding wchar_t has (either UTF16 or UTF32)
     encoding_wchar = 8,
 }
-
----@param v integer
----@return pugixml.xml_encoding
-function xml_encoding:__call(v) end
 
 return xml_encoding

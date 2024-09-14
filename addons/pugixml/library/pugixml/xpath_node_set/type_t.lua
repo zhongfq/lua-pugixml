@@ -6,7 +6,6 @@ local VALUE
 
 ---
 ---@enum pugixml.xpath_node_set.type_t
----@operator call(integer): pugixml.xpath_node_set.type_t
 local type_t = {
     ---Sorted by document order (ascending)
     type_sorted = 1,
@@ -15,9 +14,5 @@ local type_t = {
     ---Not ordered
     type_unsorted = 0,
 }
-
----@param v integer
----@return pugixml.xpath_node_set.type_t
-function type_t:__call(v) end
 
 return type_t

@@ -8,9 +8,6 @@ local xml_text = {}
 ---@return any
 function xml_text:__gc() end
 
----@return any
-function xml_text:__olua_move() end
-
 ---Get text as bool (returns true if first character is in '1tTyY' set), or the default value if object is empty
 ---@param def boolean
 ---@return boolean

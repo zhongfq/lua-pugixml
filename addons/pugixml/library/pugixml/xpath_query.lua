@@ -8,9 +8,6 @@ local xpath_query = {}
 ---@return any
 function xpath_query:__gc() end
 
----@return any
-function xpath_query:__olua_move() end
-
 ---Evaluate expression as boolean value in the specified context; performs type conversion if necessary.
 ---If PUGIXML_NO_EXCEPTIONS is not defined, throws std::bad_alloc on out of memory errors.
 ---@param n pugixml.xpath_node

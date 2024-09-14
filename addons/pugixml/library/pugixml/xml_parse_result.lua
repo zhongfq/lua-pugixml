@@ -11,9 +11,6 @@ local xml_parse_result = {}
 ---@return any
 function xml_parse_result:__gc() end
 
----@return any
-function xml_parse_result:__olua_move() end
-
 ---Get error description
 ---@return string
 function xml_parse_result:description() end

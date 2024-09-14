@@ -8,9 +8,6 @@ local xml_writer = {}
 ---@return any
 function xml_writer:__gc() end
 
----@return any
-function xml_writer:__olua_move() end
-
 ---Write memory chunk into stream/file/whatever
 ---@param data any
 ---@param size integer

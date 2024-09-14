@@ -8,9 +8,6 @@ local xpath_node_set = {}
 ---@return any
 function xpath_node_set:__gc() end
 
----@return any
-function xpath_node_set:__olua_move() end
-
 ---Check if collection is empty
 ---@return boolean
 function xpath_node_set:empty() end

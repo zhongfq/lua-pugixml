@@ -8,9 +8,6 @@ local xml_tree_walker = {}
 ---@return any
 function xml_tree_walker:__gc() end
 
----@return any
-function xml_tree_walker:__olua_move() end
-
 ---Callback that is called when traversal begins
 ---@param node pugixml.xml_node
 ---@return boolean

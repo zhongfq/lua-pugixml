@@ -8,9 +8,6 @@ local xml_attribute = {}
 ---@return any
 function xml_attribute:__gc() end
 
----@return any
-function xml_attribute:__olua_move() end
-
 ---Get attribute value as bool (returns true if first character is in '1tTyY' set), or the default value if attribute is empty
 ---@param def boolean
 ---@return boolean

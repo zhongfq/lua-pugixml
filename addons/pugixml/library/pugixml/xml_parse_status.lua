@@ -6,7 +6,6 @@ local VALUE
 
 ---
 ---@enum pugixml.xml_parse_status
----@operator call(integer): pugixml.xml_parse_status
 local xml_parse_status = {
     ---Unable to append nodes since root type is not node_element or node_document (exclusive to xml_node::append_buffer)
     status_append_invalid_root = 15,
@@ -43,9 +42,5 @@ local xml_parse_status = {
     ---Parser could not determine tag type
     status_unrecognized_tag = 5,
 }
-
----@param v integer
----@return pugixml.xml_parse_status
-function xml_parse_status:__call(v) end
 
 return xml_parse_status

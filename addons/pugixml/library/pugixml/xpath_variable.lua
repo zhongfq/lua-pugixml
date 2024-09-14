@@ -12,9 +12,6 @@ local xpath_variable = {}
 ---@return any
 function xpath_variable:__gc() end
 
----@return any
-function xpath_variable:__olua_move() end
-
 ---Get variable value; no type conversion is performed, default value (false, NaN, empty string, empty node set) is returned on type mismatch error
 ---@return boolean
 function xpath_variable:get_boolean() end

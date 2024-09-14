@@ -8,9 +8,6 @@ local xml_node = {}
 ---@return any
 function xml_node:__gc() end
 
----@return any
-function xml_node:__olua_move() end
-
 ---Add attribute with specified name. Returns added attribute, or empty attribute on errors.
 ---@param name string
 ---@return pugixml.xml_attribute

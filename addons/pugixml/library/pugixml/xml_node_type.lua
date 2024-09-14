@@ -6,7 +6,6 @@ local VALUE
 
 ---
 ---@enum pugixml.xml_node_type
----@operator call(integer): pugixml.xml_node_type
 local xml_node_type = {
     ---Character data, i.e. '<![CDATA[text]]>'
     node_cdata = 4,
@@ -27,9 +26,5 @@ local xml_node_type = {
     ---Processing instruction, i.e. '<?name?>'
     node_pi = 6,
 }
-
----@param v integer
----@return pugixml.xml_node_type
-function xml_node_type:__call(v) end
 
 return xml_node_type

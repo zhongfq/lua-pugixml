@@ -8,9 +8,6 @@ local xpath_variable_set = {}
 ---@return any
 function xpath_variable_set:__gc() end
 
----@return any
-function xpath_variable_set:__olua_move() end
-
 ---Add a new variable or get the existing one, if the types match
 ---@param name string
 ---@param type pugixml.xpath_value_type

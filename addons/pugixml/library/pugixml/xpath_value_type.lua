@@ -6,7 +6,6 @@ local VALUE
 
 ---
 ---@enum pugixml.xpath_value_type
----@operator call(integer): pugixml.xpath_value_type
 local xpath_value_type = {
     ---Boolean
     xpath_type_boolean = 4,
@@ -19,9 +18,5 @@ local xpath_value_type = {
     ---String
     xpath_type_string = 3,
 }
-
----@param v integer
----@return pugixml.xpath_value_type
-function xpath_value_type:__call(v) end
 
 return xpath_value_type

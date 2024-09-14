@@ -10,9 +10,6 @@ local xpath_parse_result = {}
 ---@return any
 function xpath_parse_result:__gc() end
 
----@return any
-function xpath_parse_result:__olua_move() end
-
 ---Get error description
 ---@return string
 function xpath_parse_result:description() end

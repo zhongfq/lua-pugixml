@@ -8,9 +8,6 @@ local xpath_node = {}
 ---@return any
 function xpath_node:__gc() end
 
----@return any
-function xpath_node:__olua_move() end
-
 ---@return pugixml.xml_attribute
 function xpath_node:attribute() end
 
