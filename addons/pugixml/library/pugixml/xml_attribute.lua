@@ -5,8 +5,21 @@
 ---@class pugixml.xml_attribute 
 local xml_attribute = {}
 
+---Comparison operators (compares wrapped attribute pointers)
+---@param r pugixml.xml_attribute
+---@return boolean
+function xml_attribute:__eq(r) end
+
 ---@return any
 function xml_attribute:__gc() end
+
+---@param r pugixml.xml_attribute
+---@return boolean
+function xml_attribute:__le(r) end
+
+---@param r pugixml.xml_attribute
+---@return boolean
+function xml_attribute:__lt(r) end
 
 ---Get attribute value as bool (returns true if first character is in '1tTyY' set), or the default value if attribute is empty
 ---@param def boolean

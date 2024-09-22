@@ -3,9 +3,9 @@
 
 ---Parsing result
 ---@class pugixml.xml_parse_result 
----@field encoding pugixml.xml_encoding
----@field offset integer
 ---@field status pugixml.xml_parse_status
+---@field offset integer
+---@field encoding pugixml.xml_encoding
 local xml_parse_result = {}
 
 ---@return any

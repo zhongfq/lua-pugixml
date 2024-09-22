@@ -5,8 +5,21 @@
 ---@class pugixml.xml_node 
 local xml_node = {}
 
+---Comparison operators (compares wrapped node pointers)
+---@param r pugixml.xml_node
+---@return boolean
+function xml_node:__eq(r) end
+
 ---@return any
 function xml_node:__gc() end
+
+---@param r pugixml.xml_node
+---@return boolean
+function xml_node:__le(r) end
+
+---@param r pugixml.xml_node
+---@return boolean
+function xml_node:__lt(r) end
 
 ---Add attribute with specified name. Returns added attribute, or empty attribute on errors.
 ---@param name string

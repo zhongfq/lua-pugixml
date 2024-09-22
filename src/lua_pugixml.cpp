@@ -224,17 +224,17 @@ static int _olua_fun_pugi_xpath_query_evaluate_string$2(lua_State *L)
 
 static int _olua_fun_pugi_xpath_query_evaluate_string(lua_State *L)
 {
-    int num_args = lua_gettop(L) - 1;
+    int num_args = lua_gettop(L);
 
-    if (num_args == 1) {
-        // if ((olua_is_object(L, 2, "pugixml.xpath_node"))) {
+    if (num_args == 2) {
+        // if ((olua_is_object(L, 1, "pugixml.xpath_query")) && (olua_is_object(L, 2, "pugixml.xpath_node"))) {
             // pugi::string_t evaluate_string(const pugi::xpath_node &n)
             return _olua_fun_pugi_xpath_query_evaluate_string$1(L);
         // }
     }
 
-    if (num_args == 3) {
-        // if ((olua_is_string(L, 2)) && (olua_is_integer(L, 3)) && (olua_is_object(L, 4, "pugixml.xpath_node"))) {
+    if (num_args == 4) {
+        // if ((olua_is_object(L, 1, "pugixml.xpath_query")) && (olua_is_string(L, 2)) && (olua_is_integer(L, 3)) && (olua_is_object(L, 4, "pugixml.xpath_node"))) {
             // size_t evaluate_string(pugi::char_t *buffer, size_t capacity, const pugi::xpath_node &n)
             return _olua_fun_pugi_xpath_query_evaluate_string$2(L);
         // }
@@ -415,6 +415,31 @@ OLUA_LIB int luaopen_pugixml_xpath_query(lua_State *L)
     return 1;
 }
 OLUA_END_DECLS
+
+static int _olua_fun_pugi_xpath_node___eq(lua_State *L)
+{
+    try {
+        olua_startinvoke(L);
+
+        pugi::xpath_node *self = nullptr;
+        pugi::xpath_node *arg1;       /** n */
+
+        olua_to_object(L, 1, &self, "pugixml.xpath_node");
+        olua_check_object(L, 2, &arg1, "pugixml.xpath_node");
+
+        // @operator(operator==) bool operator==(const pugi::xpath_node &n)
+        bool ret = (*self) == (*arg1);
+        int num_ret = olua_push_bool(L, ret);
+
+        olua_endinvoke(L);
+
+        return num_ret;
+    } catch (std::exception &e) {
+        lua_pushfstring(L, "pugi::xpath_node::__eq(): %s", e.what());
+        luaL_error(L, olua_tostring(L, -1));
+        return 0;
+    }
+}
 
 static int _olua_fun_pugi_xpath_node___gc(lua_State *L)
 {
@@ -598,6 +623,7 @@ static int _olua_fun_pugi_xpath_node_parent(lua_State *L)
 static int _olua_cls_pugixml_xpath_node(lua_State *L)
 {
     oluacls_class<pugi::xpath_node>(L, "pugixml.xpath_node");
+    oluacls_func(L, "__eq", _olua_fun_pugi_xpath_node___eq);
     oluacls_func(L, "__gc", _olua_fun_pugi_xpath_node___gc);
     oluacls_func(L, "attribute", _olua_fun_pugi_xpath_node_attribute);
     oluacls_func(L, "new", _olua_fun_pugi_xpath_node_new);
@@ -702,15 +728,15 @@ static int _olua_fun_pugi_xpath_parse_result_error$2(lua_State *L)
 
 static int _olua_fun_pugi_xpath_parse_result_error(lua_State *L)
 {
-    int num_args = lua_gettop(L) - 1;
+    int num_args = lua_gettop(L);
 
-    if (num_args == 0) {
+    if (num_args == 1) {
         // const char *error
         return _olua_fun_pugi_xpath_parse_result_error$1(L);
     }
 
-    if (num_args == 1) {
-        // if ((olua_is_string(L, 2))) {
+    if (num_args == 2) {
+        // if ((olua_is_object(L, 1, "pugixml.xpath_parse_result")) && (olua_is_string(L, 2))) {
             // const char *error
             return _olua_fun_pugi_xpath_parse_result_error$2(L);
         // }
@@ -790,15 +816,15 @@ static int _olua_fun_pugi_xpath_parse_result_offset$2(lua_State *L)
 
 static int _olua_fun_pugi_xpath_parse_result_offset(lua_State *L)
 {
-    int num_args = lua_gettop(L) - 1;
+    int num_args = lua_gettop(L);
 
-    if (num_args == 0) {
+    if (num_args == 1) {
         // ptrdiff_t offset
         return _olua_fun_pugi_xpath_parse_result_offset$1(L);
     }
 
-    if (num_args == 1) {
-        // if ((olua_is_integer(L, 2))) {
+    if (num_args == 2) {
+        // if ((olua_is_object(L, 1, "pugixml.xpath_parse_result")) && (olua_is_integer(L, 2))) {
             // ptrdiff_t offset
             return _olua_fun_pugi_xpath_parse_result_offset$2(L);
         // }
@@ -981,15 +1007,15 @@ static int _olua_fun_pugi_xpath_node_set_sort$2(lua_State *L)
 
 static int _olua_fun_pugi_xpath_node_set_sort(lua_State *L)
 {
-    int num_args = lua_gettop(L) - 1;
+    int num_args = lua_gettop(L);
 
-    if (num_args == 0) {
+    if (num_args == 1) {
         // void sort()
         return _olua_fun_pugi_xpath_node_set_sort$2(L);
     }
 
-    if (num_args == 1) {
-        // if ((olua_is_bool(L, 2))) {
+    if (num_args == 2) {
+        // if ((olua_is_object(L, 1, "pugixml.xpath_node_set")) && (olua_is_bool(L, 2))) {
             // void sort(@optional bool reverse)
             return _olua_fun_pugi_xpath_node_set_sort$1(L);
         // }
@@ -1242,25 +1268,25 @@ static int _olua_fun_pugi_xpath_variable_set_set$4(lua_State *L)
 
 static int _olua_fun_pugi_xpath_variable_set_set(lua_State *L)
 {
-    int num_args = lua_gettop(L) - 1;
+    int num_args = lua_gettop(L);
 
-    if (num_args == 2) {
-        if ((olua_is_string(L, 2)) && (olua_is_bool(L, 3))) {
+    if (num_args == 3) {
+        if ((olua_is_object(L, 1, "pugixml.xpath_variable_set")) && (olua_is_string(L, 2)) && (olua_is_bool(L, 3))) {
             // bool set(const pugi::char_t *name, bool value)
             return _olua_fun_pugi_xpath_variable_set_set$1(L);
         }
 
-        if ((olua_is_string(L, 2)) && (olua_is_string(L, 3))) {
+        if ((olua_is_object(L, 1, "pugixml.xpath_variable_set")) && (olua_is_string(L, 2)) && (olua_is_string(L, 3))) {
             // bool set(const pugi::char_t *name, const pugi::char_t *value)
             return _olua_fun_pugi_xpath_variable_set_set$3(L);
         }
 
-        if ((olua_is_string(L, 2)) && (olua_is_number(L, 3))) {
+        if ((olua_is_object(L, 1, "pugixml.xpath_variable_set")) && (olua_is_string(L, 2)) && (olua_is_number(L, 3))) {
             // bool set(const pugi::char_t *name, double value)
             return _olua_fun_pugi_xpath_variable_set_set$2(L);
         }
 
-        // if ((olua_is_string(L, 2)) && (olua_is_object(L, 3, "pugixml.xpath_node_set"))) {
+        // if ((olua_is_object(L, 1, "pugixml.xpath_variable_set")) && (olua_is_string(L, 2)) && (olua_is_object(L, 3, "pugixml.xpath_node_set"))) {
             // bool set(const pugi::char_t *name, const pugi::xpath_node_set &value)
             return _olua_fun_pugi_xpath_variable_set_set$4(L);
         // }
@@ -1523,25 +1549,25 @@ static int _olua_fun_pugi_xpath_variable_set$4(lua_State *L)
 
 static int _olua_fun_pugi_xpath_variable_set(lua_State *L)
 {
-    int num_args = lua_gettop(L) - 1;
+    int num_args = lua_gettop(L);
 
-    if (num_args == 1) {
-        if ((olua_is_bool(L, 2))) {
+    if (num_args == 2) {
+        if ((olua_is_object(L, 1, "pugixml.xpath_variable")) && (olua_is_bool(L, 2))) {
             // bool set(bool value)
             return _olua_fun_pugi_xpath_variable_set$1(L);
         }
 
-        if ((olua_is_string(L, 2))) {
+        if ((olua_is_object(L, 1, "pugixml.xpath_variable")) && (olua_is_string(L, 2))) {
             // bool set(const pugi::char_t *value)
             return _olua_fun_pugi_xpath_variable_set$3(L);
         }
 
-        if ((olua_is_number(L, 2))) {
+        if ((olua_is_object(L, 1, "pugixml.xpath_variable")) && (olua_is_number(L, 2))) {
             // bool set(double value)
             return _olua_fun_pugi_xpath_variable_set$2(L);
         }
 
-        // if ((olua_is_object(L, 2, "pugixml.xpath_node_set"))) {
+        // if ((olua_is_object(L, 1, "pugixml.xpath_variable")) && (olua_is_object(L, 2, "pugixml.xpath_node_set"))) {
             // bool set(const pugi::xpath_node_set &value)
             return _olua_fun_pugi_xpath_variable_set$4(L);
         // }
@@ -1785,15 +1811,15 @@ static int _olua_fun_pugi_xml_parse_result_encoding$2(lua_State *L)
 
 static int _olua_fun_pugi_xml_parse_result_encoding(lua_State *L)
 {
-    int num_args = lua_gettop(L) - 1;
+    int num_args = lua_gettop(L);
 
-    if (num_args == 0) {
+    if (num_args == 1) {
         // pugi::xml_encoding encoding
         return _olua_fun_pugi_xml_parse_result_encoding$1(L);
     }
 
-    if (num_args == 1) {
-        // if ((olua_is_enum(L, 2))) {
+    if (num_args == 2) {
+        // if ((olua_is_object(L, 1, "pugixml.xml_parse_result")) && (olua_is_enum(L, 2))) {
             // pugi::xml_encoding encoding
             return _olua_fun_pugi_xml_parse_result_encoding$2(L);
         // }
@@ -1873,15 +1899,15 @@ static int _olua_fun_pugi_xml_parse_result_offset$2(lua_State *L)
 
 static int _olua_fun_pugi_xml_parse_result_offset(lua_State *L)
 {
-    int num_args = lua_gettop(L) - 1;
+    int num_args = lua_gettop(L);
 
-    if (num_args == 0) {
+    if (num_args == 1) {
         // ptrdiff_t offset
         return _olua_fun_pugi_xml_parse_result_offset$1(L);
     }
 
-    if (num_args == 1) {
-        // if ((olua_is_integer(L, 2))) {
+    if (num_args == 2) {
+        // if ((olua_is_object(L, 1, "pugixml.xml_parse_result")) && (olua_is_integer(L, 2))) {
             // ptrdiff_t offset
             return _olua_fun_pugi_xml_parse_result_offset$2(L);
         // }
@@ -1941,15 +1967,15 @@ static int _olua_fun_pugi_xml_parse_result_status$2(lua_State *L)
 
 static int _olua_fun_pugi_xml_parse_result_status(lua_State *L)
 {
-    int num_args = lua_gettop(L) - 1;
+    int num_args = lua_gettop(L);
 
-    if (num_args == 0) {
+    if (num_args == 1) {
         // pugi::xml_parse_status status
         return _olua_fun_pugi_xml_parse_result_status$1(L);
     }
 
-    if (num_args == 1) {
-        // if ((olua_is_enum(L, 2))) {
+    if (num_args == 2) {
+        // if ((olua_is_object(L, 1, "pugixml.xml_parse_result")) && (olua_is_enum(L, 2))) {
             // pugi::xml_parse_status status
             return _olua_fun_pugi_xml_parse_result_status$2(L);
         // }
@@ -1966,9 +1992,9 @@ static int _olua_cls_pugixml_xml_parse_result(lua_State *L)
     oluacls_func(L, "__gc", _olua_fun_pugi_xml_parse_result___gc);
     oluacls_func(L, "description", _olua_fun_pugi_xml_parse_result_description);
     oluacls_func(L, "new", _olua_fun_pugi_xml_parse_result_new);
-    oluacls_prop(L, "encoding", _olua_fun_pugi_xml_parse_result_encoding, _olua_fun_pugi_xml_parse_result_encoding);
-    oluacls_prop(L, "offset", _olua_fun_pugi_xml_parse_result_offset, _olua_fun_pugi_xml_parse_result_offset);
     oluacls_prop(L, "status", _olua_fun_pugi_xml_parse_result_status, _olua_fun_pugi_xml_parse_result_status);
+    oluacls_prop(L, "offset", _olua_fun_pugi_xml_parse_result_offset, _olua_fun_pugi_xml_parse_result_offset);
+    oluacls_prop(L, "encoding", _olua_fun_pugi_xml_parse_result_encoding, _olua_fun_pugi_xml_parse_result_encoding);
 
     return 1;
 }
@@ -1984,6 +2010,31 @@ OLUA_LIB int luaopen_pugixml_xml_parse_result(lua_State *L)
 }
 OLUA_END_DECLS
 
+static int _olua_fun_pugi_xml_attribute___eq(lua_State *L)
+{
+    try {
+        olua_startinvoke(L);
+
+        pugi::xml_attribute *self = nullptr;
+        pugi::xml_attribute *arg1;       /** r */
+
+        olua_to_object(L, 1, &self, "pugixml.xml_attribute");
+        olua_check_object(L, 2, &arg1, "pugixml.xml_attribute");
+
+        // @operator(operator==) bool operator==(const pugi::xml_attribute &r)
+        bool ret = (*self) == (*arg1);
+        int num_ret = olua_push_bool(L, ret);
+
+        olua_endinvoke(L);
+
+        return num_ret;
+    } catch (std::exception &e) {
+        lua_pushfstring(L, "pugi::xml_attribute::__eq(): %s", e.what());
+        luaL_error(L, olua_tostring(L, -1));
+        return 0;
+    }
+}
+
 static int _olua_fun_pugi_xml_attribute___gc(lua_State *L)
 {
     olua_startinvoke(L);
@@ -1994,6 +2045,56 @@ static int _olua_fun_pugi_xml_attribute___gc(lua_State *L)
     olua_endinvoke(L);
 
     return 0;
+}
+
+static int _olua_fun_pugi_xml_attribute___le(lua_State *L)
+{
+    try {
+        olua_startinvoke(L);
+
+        pugi::xml_attribute *self = nullptr;
+        pugi::xml_attribute *arg1;       /** r */
+
+        olua_to_object(L, 1, &self, "pugixml.xml_attribute");
+        olua_check_object(L, 2, &arg1, "pugixml.xml_attribute");
+
+        // @operator(operator<=) bool operator<=(const pugi::xml_attribute &r)
+        bool ret = (*self) <= (*arg1);
+        int num_ret = olua_push_bool(L, ret);
+
+        olua_endinvoke(L);
+
+        return num_ret;
+    } catch (std::exception &e) {
+        lua_pushfstring(L, "pugi::xml_attribute::__le(): %s", e.what());
+        luaL_error(L, olua_tostring(L, -1));
+        return 0;
+    }
+}
+
+static int _olua_fun_pugi_xml_attribute___lt(lua_State *L)
+{
+    try {
+        olua_startinvoke(L);
+
+        pugi::xml_attribute *self = nullptr;
+        pugi::xml_attribute *arg1;       /** r */
+
+        olua_to_object(L, 1, &self, "pugixml.xml_attribute");
+        olua_check_object(L, 2, &arg1, "pugixml.xml_attribute");
+
+        // @operator(operator<) bool operator<(const pugi::xml_attribute &r)
+        bool ret = (*self) < (*arg1);
+        int num_ret = olua_push_bool(L, ret);
+
+        olua_endinvoke(L);
+
+        return num_ret;
+    } catch (std::exception &e) {
+        lua_pushfstring(L, "pugi::xml_attribute::__lt(): %s", e.what());
+        luaL_error(L, olua_tostring(L, -1));
+        return 0;
+    }
 }
 
 static int _olua_fun_pugi_xml_attribute_as_bool$1(lua_State *L)
@@ -2046,15 +2147,15 @@ static int _olua_fun_pugi_xml_attribute_as_bool$2(lua_State *L)
 
 static int _olua_fun_pugi_xml_attribute_as_bool(lua_State *L)
 {
-    int num_args = lua_gettop(L) - 1;
+    int num_args = lua_gettop(L);
 
-    if (num_args == 0) {
+    if (num_args == 1) {
         // bool as_bool()
         return _olua_fun_pugi_xml_attribute_as_bool$2(L);
     }
 
-    if (num_args == 1) {
-        // if ((olua_is_bool(L, 2))) {
+    if (num_args == 2) {
+        // if ((olua_is_object(L, 1, "pugixml.xml_attribute")) && (olua_is_bool(L, 2))) {
             // bool as_bool(@optional bool def)
             return _olua_fun_pugi_xml_attribute_as_bool$1(L);
         // }
@@ -2115,15 +2216,15 @@ static int _olua_fun_pugi_xml_attribute_as_double$2(lua_State *L)
 
 static int _olua_fun_pugi_xml_attribute_as_double(lua_State *L)
 {
-    int num_args = lua_gettop(L) - 1;
+    int num_args = lua_gettop(L);
 
-    if (num_args == 0) {
+    if (num_args == 1) {
         // double as_double()
         return _olua_fun_pugi_xml_attribute_as_double$2(L);
     }
 
-    if (num_args == 1) {
-        // if ((olua_is_number(L, 2))) {
+    if (num_args == 2) {
+        // if ((olua_is_object(L, 1, "pugixml.xml_attribute")) && (olua_is_number(L, 2))) {
             // double as_double(@optional double def)
             return _olua_fun_pugi_xml_attribute_as_double$1(L);
         // }
@@ -2184,15 +2285,15 @@ static int _olua_fun_pugi_xml_attribute_as_float$2(lua_State *L)
 
 static int _olua_fun_pugi_xml_attribute_as_float(lua_State *L)
 {
-    int num_args = lua_gettop(L) - 1;
+    int num_args = lua_gettop(L);
 
-    if (num_args == 0) {
+    if (num_args == 1) {
         // float as_float()
         return _olua_fun_pugi_xml_attribute_as_float$2(L);
     }
 
-    if (num_args == 1) {
-        // if ((olua_is_number(L, 2))) {
+    if (num_args == 2) {
+        // if ((olua_is_object(L, 1, "pugixml.xml_attribute")) && (olua_is_number(L, 2))) {
             // float as_float(@optional float def)
             return _olua_fun_pugi_xml_attribute_as_float$1(L);
         // }
@@ -2253,15 +2354,15 @@ static int _olua_fun_pugi_xml_attribute_as_int$2(lua_State *L)
 
 static int _olua_fun_pugi_xml_attribute_as_int(lua_State *L)
 {
-    int num_args = lua_gettop(L) - 1;
+    int num_args = lua_gettop(L);
 
-    if (num_args == 0) {
+    if (num_args == 1) {
         // int as_int()
         return _olua_fun_pugi_xml_attribute_as_int$2(L);
     }
 
-    if (num_args == 1) {
-        // if ((olua_is_integer(L, 2))) {
+    if (num_args == 2) {
+        // if ((olua_is_object(L, 1, "pugixml.xml_attribute")) && (olua_is_integer(L, 2))) {
             // int as_int(@optional int def)
             return _olua_fun_pugi_xml_attribute_as_int$1(L);
         // }
@@ -2322,15 +2423,15 @@ static int _olua_fun_pugi_xml_attribute_as_llong$2(lua_State *L)
 
 static int _olua_fun_pugi_xml_attribute_as_llong(lua_State *L)
 {
-    int num_args = lua_gettop(L) - 1;
+    int num_args = lua_gettop(L);
 
-    if (num_args == 0) {
+    if (num_args == 1) {
         // long long as_llong()
         return _olua_fun_pugi_xml_attribute_as_llong$2(L);
     }
 
-    if (num_args == 1) {
-        // if ((olua_is_integer(L, 2))) {
+    if (num_args == 2) {
+        // if ((olua_is_object(L, 1, "pugixml.xml_attribute")) && (olua_is_integer(L, 2))) {
             // long long as_llong(@optional long long def)
             return _olua_fun_pugi_xml_attribute_as_llong$1(L);
         // }
@@ -2391,15 +2492,15 @@ static int _olua_fun_pugi_xml_attribute_as_string$2(lua_State *L)
 
 static int _olua_fun_pugi_xml_attribute_as_string(lua_State *L)
 {
-    int num_args = lua_gettop(L) - 1;
+    int num_args = lua_gettop(L);
 
-    if (num_args == 0) {
+    if (num_args == 1) {
         // const pugi::char_t *as_string()
         return _olua_fun_pugi_xml_attribute_as_string$2(L);
     }
 
-    if (num_args == 1) {
-        // if ((olua_is_string(L, 2))) {
+    if (num_args == 2) {
+        // if ((olua_is_object(L, 1, "pugixml.xml_attribute")) && (olua_is_string(L, 2))) {
             // const pugi::char_t *as_string(@optional const pugi::char_t *def)
             return _olua_fun_pugi_xml_attribute_as_string$1(L);
         // }
@@ -2460,15 +2561,15 @@ static int _olua_fun_pugi_xml_attribute_as_uint$2(lua_State *L)
 
 static int _olua_fun_pugi_xml_attribute_as_uint(lua_State *L)
 {
-    int num_args = lua_gettop(L) - 1;
+    int num_args = lua_gettop(L);
 
-    if (num_args == 0) {
+    if (num_args == 1) {
         // unsigned int as_uint()
         return _olua_fun_pugi_xml_attribute_as_uint$2(L);
     }
 
-    if (num_args == 1) {
-        // if ((olua_is_integer(L, 2))) {
+    if (num_args == 2) {
+        // if ((olua_is_object(L, 1, "pugixml.xml_attribute")) && (olua_is_integer(L, 2))) {
             // unsigned int as_uint(@optional unsigned int def)
             return _olua_fun_pugi_xml_attribute_as_uint$1(L);
         // }
@@ -2529,15 +2630,15 @@ static int _olua_fun_pugi_xml_attribute_as_ullong$2(lua_State *L)
 
 static int _olua_fun_pugi_xml_attribute_as_ullong(lua_State *L)
 {
-    int num_args = lua_gettop(L) - 1;
+    int num_args = lua_gettop(L);
 
-    if (num_args == 0) {
+    if (num_args == 1) {
         // unsigned long long as_ullong()
         return _olua_fun_pugi_xml_attribute_as_ullong$2(L);
     }
 
-    if (num_args == 1) {
-        // if ((olua_is_integer(L, 2))) {
+    if (num_args == 2) {
+        // if ((olua_is_object(L, 1, "pugixml.xml_attribute")) && (olua_is_integer(L, 2))) {
             // unsigned long long as_ullong(@optional unsigned long long def)
             return _olua_fun_pugi_xml_attribute_as_ullong$1(L);
         // }
@@ -2762,17 +2863,17 @@ static int _olua_fun_pugi_xml_attribute_set_double_value$2(lua_State *L)
 
 static int _olua_fun_pugi_xml_attribute_set_double_value(lua_State *L)
 {
-    int num_args = lua_gettop(L) - 1;
+    int num_args = lua_gettop(L);
 
-    if (num_args == 1) {
-        // if ((olua_is_number(L, 2))) {
+    if (num_args == 2) {
+        // if ((olua_is_object(L, 1, "pugixml.xml_attribute")) && (olua_is_number(L, 2))) {
             // bool set_value(double rhs)
             return _olua_fun_pugi_xml_attribute_set_double_value$1(L);
         // }
     }
 
-    if (num_args == 2) {
-        // if ((olua_is_number(L, 2)) && (olua_is_integer(L, 3))) {
+    if (num_args == 3) {
+        // if ((olua_is_object(L, 1, "pugixml.xml_attribute")) && (olua_is_number(L, 2)) && (olua_is_integer(L, 3))) {
             // bool set_value(double rhs, int precision)
             return _olua_fun_pugi_xml_attribute_set_double_value$2(L);
         // }
@@ -2837,17 +2938,17 @@ static int _olua_fun_pugi_xml_attribute_set_float_value$2(lua_State *L)
 
 static int _olua_fun_pugi_xml_attribute_set_float_value(lua_State *L)
 {
-    int num_args = lua_gettop(L) - 1;
+    int num_args = lua_gettop(L);
 
-    if (num_args == 1) {
-        // if ((olua_is_number(L, 2))) {
+    if (num_args == 2) {
+        // if ((olua_is_object(L, 1, "pugixml.xml_attribute")) && (olua_is_number(L, 2))) {
             // bool set_value(float rhs)
             return _olua_fun_pugi_xml_attribute_set_float_value$1(L);
         // }
     }
 
-    if (num_args == 2) {
-        // if ((olua_is_number(L, 2)) && (olua_is_integer(L, 3))) {
+    if (num_args == 3) {
+        // if ((olua_is_object(L, 1, "pugixml.xml_attribute")) && (olua_is_number(L, 2)) && (olua_is_integer(L, 3))) {
             // bool set_value(float rhs, int precision)
             return _olua_fun_pugi_xml_attribute_set_float_value$2(L);
         // }
@@ -2989,17 +3090,17 @@ static int _olua_fun_pugi_xml_attribute_set_name$2(lua_State *L)
 
 static int _olua_fun_pugi_xml_attribute_set_name(lua_State *L)
 {
-    int num_args = lua_gettop(L) - 1;
+    int num_args = lua_gettop(L);
 
-    if (num_args == 1) {
-        // if ((olua_is_string(L, 2))) {
+    if (num_args == 2) {
+        // if ((olua_is_object(L, 1, "pugixml.xml_attribute")) && (olua_is_string(L, 2))) {
             // bool set_name(const pugi::char_t *rhs)
             return _olua_fun_pugi_xml_attribute_set_name$1(L);
         // }
     }
 
-    if (num_args == 2) {
-        // if ((olua_is_string(L, 2)) && (olua_is_integer(L, 3))) {
+    if (num_args == 3) {
+        // if ((olua_is_object(L, 1, "pugixml.xml_attribute")) && (olua_is_string(L, 2)) && (olua_is_integer(L, 3))) {
             // bool set_name(const pugi::char_t *rhs, size_t size)
             return _olua_fun_pugi_xml_attribute_set_name$2(L);
         // }
@@ -3141,17 +3242,17 @@ static int _olua_fun_pugi_xml_attribute_set_value$2(lua_State *L)
 
 static int _olua_fun_pugi_xml_attribute_set_value(lua_State *L)
 {
-    int num_args = lua_gettop(L) - 1;
+    int num_args = lua_gettop(L);
 
-    if (num_args == 1) {
-        // if ((olua_is_string(L, 2))) {
+    if (num_args == 2) {
+        // if ((olua_is_object(L, 1, "pugixml.xml_attribute")) && (olua_is_string(L, 2))) {
             // bool set_value(const pugi::char_t *rhs)
             return _olua_fun_pugi_xml_attribute_set_value$1(L);
         // }
     }
 
-    if (num_args == 2) {
-        // if ((olua_is_string(L, 2)) && (olua_is_integer(L, 3))) {
+    if (num_args == 3) {
+        // if ((olua_is_object(L, 1, "pugixml.xml_attribute")) && (olua_is_string(L, 2)) && (olua_is_integer(L, 3))) {
             // bool set_value(const pugi::char_t *rhs, size_t size)
             return _olua_fun_pugi_xml_attribute_set_value$2(L);
         // }
@@ -3188,7 +3289,10 @@ static int _olua_fun_pugi_xml_attribute_value(lua_State *L)
 static int _olua_cls_pugixml_xml_attribute(lua_State *L)
 {
     oluacls_class<pugi::xml_attribute>(L, "pugixml.xml_attribute");
+    oluacls_func(L, "__eq", _olua_fun_pugi_xml_attribute___eq);
     oluacls_func(L, "__gc", _olua_fun_pugi_xml_attribute___gc);
+    oluacls_func(L, "__le", _olua_fun_pugi_xml_attribute___le);
+    oluacls_func(L, "__lt", _olua_fun_pugi_xml_attribute___lt);
     oluacls_func(L, "as_bool", _olua_fun_pugi_xml_attribute_as_bool);
     oluacls_func(L, "as_double", _olua_fun_pugi_xml_attribute_as_double);
     oluacls_func(L, "as_float", _olua_fun_pugi_xml_attribute_as_float);
@@ -3453,15 +3557,15 @@ static int _olua_fun_pugi_lua_xml_tree_walker_on_begin$2(lua_State *L)
 
 static int _olua_fun_pugi_lua_xml_tree_walker_on_begin(lua_State *L)
 {
-    int num_args = lua_gettop(L) - 1;
+    int num_args = lua_gettop(L);
 
-    if (num_args == 0) {
+    if (num_args == 1) {
         // std::function<bool (pugi::xml_node &)> on_begin
         return _olua_fun_pugi_lua_xml_tree_walker_on_begin$1(L);
     }
 
-    if (num_args == 1) {
-        // if ((olua_is_callback(L, 2, "std.function") || olua_isnil(L, 2))) {
+    if (num_args == 2) {
+        // if ((olua_is_object(L, 1, "pugixml.lua_xml_tree_walker")) && (olua_is_callback(L, 2, "std.function") || olua_isnil(L, 2))) {
             // std::function<bool (pugi::xml_node &)> on_begin
             return _olua_fun_pugi_lua_xml_tree_walker_on_begin$2(L);
         // }
@@ -3562,15 +3666,15 @@ static int _olua_fun_pugi_lua_xml_tree_walker_on_end$2(lua_State *L)
 
 static int _olua_fun_pugi_lua_xml_tree_walker_on_end(lua_State *L)
 {
-    int num_args = lua_gettop(L) - 1;
+    int num_args = lua_gettop(L);
 
-    if (num_args == 0) {
+    if (num_args == 1) {
         // std::function<bool (pugi::xml_node &)> on_end
         return _olua_fun_pugi_lua_xml_tree_walker_on_end$1(L);
     }
 
-    if (num_args == 1) {
-        // if ((olua_is_callback(L, 2, "std.function") || olua_isnil(L, 2))) {
+    if (num_args == 2) {
+        // if ((olua_is_object(L, 1, "pugixml.lua_xml_tree_walker")) && (olua_is_callback(L, 2, "std.function") || olua_isnil(L, 2))) {
             // std::function<bool (pugi::xml_node &)> on_end
             return _olua_fun_pugi_lua_xml_tree_walker_on_end$2(L);
         // }
@@ -3671,15 +3775,15 @@ static int _olua_fun_pugi_lua_xml_tree_walker_on_for_each$2(lua_State *L)
 
 static int _olua_fun_pugi_lua_xml_tree_walker_on_for_each(lua_State *L)
 {
-    int num_args = lua_gettop(L) - 1;
+    int num_args = lua_gettop(L);
 
-    if (num_args == 0) {
+    if (num_args == 1) {
         // std::function<bool (pugi::xml_node &)> on_for_each
         return _olua_fun_pugi_lua_xml_tree_walker_on_for_each$1(L);
     }
 
-    if (num_args == 1) {
-        // if ((olua_is_callback(L, 2, "std.function") || olua_isnil(L, 2))) {
+    if (num_args == 2) {
+        // if ((olua_is_object(L, 1, "pugixml.lua_xml_tree_walker")) && (olua_is_callback(L, 2, "std.function") || olua_isnil(L, 2))) {
             // std::function<bool (pugi::xml_node &)> on_for_each
             return _olua_fun_pugi_lua_xml_tree_walker_on_for_each$2(L);
         // }
@@ -3695,8 +3799,8 @@ static int _olua_cls_pugixml_lua_xml_tree_walker(lua_State *L)
     oluacls_class<pugi::lua_xml_tree_walker, pugi::xml_tree_walker>(L, "pugixml.lua_xml_tree_walker");
     oluacls_func(L, "new", _olua_fun_pugi_lua_xml_tree_walker_new);
     oluacls_prop(L, "on_begin", _olua_fun_pugi_lua_xml_tree_walker_on_begin, _olua_fun_pugi_lua_xml_tree_walker_on_begin);
-    oluacls_prop(L, "on_end", _olua_fun_pugi_lua_xml_tree_walker_on_end, _olua_fun_pugi_lua_xml_tree_walker_on_end);
     oluacls_prop(L, "on_for_each", _olua_fun_pugi_lua_xml_tree_walker_on_for_each, _olua_fun_pugi_lua_xml_tree_walker_on_for_each);
+    oluacls_prop(L, "on_end", _olua_fun_pugi_lua_xml_tree_walker_on_end, _olua_fun_pugi_lua_xml_tree_walker_on_end);
 
     return 1;
 }
@@ -3913,15 +4017,15 @@ static int _olua_fun_pugi_lua_xml_writer_on_write$2(lua_State *L)
 
 static int _olua_fun_pugi_lua_xml_writer_on_write(lua_State *L)
 {
-    int num_args = lua_gettop(L) - 1;
+    int num_args = lua_gettop(L);
 
-    if (num_args == 0) {
+    if (num_args == 1) {
         // std::function<void (const std::string &)> on_write
         return _olua_fun_pugi_lua_xml_writer_on_write$1(L);
     }
 
-    if (num_args == 1) {
-        // if ((olua_is_callback(L, 2, "std.function") || olua_isnil(L, 2))) {
+    if (num_args == 2) {
+        // if ((olua_is_object(L, 1, "pugixml.lua_xml_writer")) && (olua_is_callback(L, 2, "std.function") || olua_isnil(L, 2))) {
             // std::function<void (const std::string &)> on_write
             return _olua_fun_pugi_lua_xml_writer_on_write$2(L);
         // }
@@ -4014,15 +4118,15 @@ static int _olua_fun_pugi_xml_text_as_bool$2(lua_State *L)
 
 static int _olua_fun_pugi_xml_text_as_bool(lua_State *L)
 {
-    int num_args = lua_gettop(L) - 1;
+    int num_args = lua_gettop(L);
 
-    if (num_args == 0) {
+    if (num_args == 1) {
         // bool as_bool()
         return _olua_fun_pugi_xml_text_as_bool$2(L);
     }
 
-    if (num_args == 1) {
-        // if ((olua_is_bool(L, 2))) {
+    if (num_args == 2) {
+        // if ((olua_is_object(L, 1, "pugixml.xml_text")) && (olua_is_bool(L, 2))) {
             // bool as_bool(@optional bool def)
             return _olua_fun_pugi_xml_text_as_bool$1(L);
         // }
@@ -4083,15 +4187,15 @@ static int _olua_fun_pugi_xml_text_as_double$2(lua_State *L)
 
 static int _olua_fun_pugi_xml_text_as_double(lua_State *L)
 {
-    int num_args = lua_gettop(L) - 1;
+    int num_args = lua_gettop(L);
 
-    if (num_args == 0) {
+    if (num_args == 1) {
         // double as_double()
         return _olua_fun_pugi_xml_text_as_double$2(L);
     }
 
-    if (num_args == 1) {
-        // if ((olua_is_number(L, 2))) {
+    if (num_args == 2) {
+        // if ((olua_is_object(L, 1, "pugixml.xml_text")) && (olua_is_number(L, 2))) {
             // double as_double(@optional double def)
             return _olua_fun_pugi_xml_text_as_double$1(L);
         // }
@@ -4152,15 +4256,15 @@ static int _olua_fun_pugi_xml_text_as_float$2(lua_State *L)
 
 static int _olua_fun_pugi_xml_text_as_float(lua_State *L)
 {
-    int num_args = lua_gettop(L) - 1;
+    int num_args = lua_gettop(L);
 
-    if (num_args == 0) {
+    if (num_args == 1) {
         // float as_float()
         return _olua_fun_pugi_xml_text_as_float$2(L);
     }
 
-    if (num_args == 1) {
-        // if ((olua_is_number(L, 2))) {
+    if (num_args == 2) {
+        // if ((olua_is_object(L, 1, "pugixml.xml_text")) && (olua_is_number(L, 2))) {
             // float as_float(@optional float def)
             return _olua_fun_pugi_xml_text_as_float$1(L);
         // }
@@ -4221,15 +4325,15 @@ static int _olua_fun_pugi_xml_text_as_int$2(lua_State *L)
 
 static int _olua_fun_pugi_xml_text_as_int(lua_State *L)
 {
-    int num_args = lua_gettop(L) - 1;
+    int num_args = lua_gettop(L);
 
-    if (num_args == 0) {
+    if (num_args == 1) {
         // int as_int()
         return _olua_fun_pugi_xml_text_as_int$2(L);
     }
 
-    if (num_args == 1) {
-        // if ((olua_is_integer(L, 2))) {
+    if (num_args == 2) {
+        // if ((olua_is_object(L, 1, "pugixml.xml_text")) && (olua_is_integer(L, 2))) {
             // int as_int(@optional int def)
             return _olua_fun_pugi_xml_text_as_int$1(L);
         // }
@@ -4290,15 +4394,15 @@ static int _olua_fun_pugi_xml_text_as_llong$2(lua_State *L)
 
 static int _olua_fun_pugi_xml_text_as_llong(lua_State *L)
 {
-    int num_args = lua_gettop(L) - 1;
+    int num_args = lua_gettop(L);
 
-    if (num_args == 0) {
+    if (num_args == 1) {
         // long long as_llong()
         return _olua_fun_pugi_xml_text_as_llong$2(L);
     }
 
-    if (num_args == 1) {
-        // if ((olua_is_integer(L, 2))) {
+    if (num_args == 2) {
+        // if ((olua_is_object(L, 1, "pugixml.xml_text")) && (olua_is_integer(L, 2))) {
             // long long as_llong(@optional long long def)
             return _olua_fun_pugi_xml_text_as_llong$1(L);
         // }
@@ -4359,15 +4463,15 @@ static int _olua_fun_pugi_xml_text_as_string$2(lua_State *L)
 
 static int _olua_fun_pugi_xml_text_as_string(lua_State *L)
 {
-    int num_args = lua_gettop(L) - 1;
+    int num_args = lua_gettop(L);
 
-    if (num_args == 0) {
+    if (num_args == 1) {
         // const pugi::char_t *as_string()
         return _olua_fun_pugi_xml_text_as_string$2(L);
     }
 
-    if (num_args == 1) {
-        // if ((olua_is_string(L, 2))) {
+    if (num_args == 2) {
+        // if ((olua_is_object(L, 1, "pugixml.xml_text")) && (olua_is_string(L, 2))) {
             // const pugi::char_t *as_string(@optional const pugi::char_t *def)
             return _olua_fun_pugi_xml_text_as_string$1(L);
         // }
@@ -4428,15 +4532,15 @@ static int _olua_fun_pugi_xml_text_as_uint$2(lua_State *L)
 
 static int _olua_fun_pugi_xml_text_as_uint(lua_State *L)
 {
-    int num_args = lua_gettop(L) - 1;
+    int num_args = lua_gettop(L);
 
-    if (num_args == 0) {
+    if (num_args == 1) {
         // unsigned int as_uint()
         return _olua_fun_pugi_xml_text_as_uint$2(L);
     }
 
-    if (num_args == 1) {
-        // if ((olua_is_integer(L, 2))) {
+    if (num_args == 2) {
+        // if ((olua_is_object(L, 1, "pugixml.xml_text")) && (olua_is_integer(L, 2))) {
             // unsigned int as_uint(@optional unsigned int def)
             return _olua_fun_pugi_xml_text_as_uint$1(L);
         // }
@@ -4497,15 +4601,15 @@ static int _olua_fun_pugi_xml_text_as_ullong$2(lua_State *L)
 
 static int _olua_fun_pugi_xml_text_as_ullong(lua_State *L)
 {
-    int num_args = lua_gettop(L) - 1;
+    int num_args = lua_gettop(L);
 
-    if (num_args == 0) {
+    if (num_args == 1) {
         // unsigned long long as_ullong()
         return _olua_fun_pugi_xml_text_as_ullong$2(L);
     }
 
-    if (num_args == 1) {
-        // if ((olua_is_integer(L, 2))) {
+    if (num_args == 2) {
+        // if ((olua_is_object(L, 1, "pugixml.xml_text")) && (olua_is_integer(L, 2))) {
             // unsigned long long as_ullong(@optional unsigned long long def)
             return _olua_fun_pugi_xml_text_as_ullong$1(L);
         // }
@@ -4659,17 +4763,17 @@ static int _olua_fun_pugi_xml_text_set$2(lua_State *L)
 
 static int _olua_fun_pugi_xml_text_set(lua_State *L)
 {
-    int num_args = lua_gettop(L) - 1;
+    int num_args = lua_gettop(L);
 
-    if (num_args == 1) {
-        // if ((olua_is_string(L, 2))) {
+    if (num_args == 2) {
+        // if ((olua_is_object(L, 1, "pugixml.xml_text")) && (olua_is_string(L, 2))) {
             // bool set(const pugi::char_t *rhs)
             return _olua_fun_pugi_xml_text_set$1(L);
         // }
     }
 
-    if (num_args == 2) {
-        // if ((olua_is_string(L, 2)) && (olua_is_integer(L, 3))) {
+    if (num_args == 3) {
+        // if ((olua_is_object(L, 1, "pugixml.xml_text")) && (olua_is_string(L, 2)) && (olua_is_integer(L, 3))) {
             // bool set(const pugi::char_t *rhs, size_t size)
             return _olua_fun_pugi_xml_text_set$2(L);
         // }
@@ -4759,17 +4863,17 @@ static int _olua_fun_pugi_xml_text_set_double$2(lua_State *L)
 
 static int _olua_fun_pugi_xml_text_set_double(lua_State *L)
 {
-    int num_args = lua_gettop(L) - 1;
+    int num_args = lua_gettop(L);
 
-    if (num_args == 1) {
-        // if ((olua_is_number(L, 2))) {
+    if (num_args == 2) {
+        // if ((olua_is_object(L, 1, "pugixml.xml_text")) && (olua_is_number(L, 2))) {
             // bool set(double rhs)
             return _olua_fun_pugi_xml_text_set_double$1(L);
         // }
     }
 
-    if (num_args == 2) {
-        // if ((olua_is_number(L, 2)) && (olua_is_integer(L, 3))) {
+    if (num_args == 3) {
+        // if ((olua_is_object(L, 1, "pugixml.xml_text")) && (olua_is_number(L, 2)) && (olua_is_integer(L, 3))) {
             // bool set(double rhs, int precision)
             return _olua_fun_pugi_xml_text_set_double$2(L);
         // }
@@ -4834,17 +4938,17 @@ static int _olua_fun_pugi_xml_text_set_float$2(lua_State *L)
 
 static int _olua_fun_pugi_xml_text_set_float(lua_State *L)
 {
-    int num_args = lua_gettop(L) - 1;
+    int num_args = lua_gettop(L);
 
-    if (num_args == 1) {
-        // if ((olua_is_number(L, 2))) {
+    if (num_args == 2) {
+        // if ((olua_is_object(L, 1, "pugixml.xml_text")) && (olua_is_number(L, 2))) {
             // bool set(float rhs)
             return _olua_fun_pugi_xml_text_set_float$1(L);
         // }
     }
 
-    if (num_args == 2) {
-        // if ((olua_is_number(L, 2)) && (olua_is_integer(L, 3))) {
+    if (num_args == 3) {
+        // if ((olua_is_object(L, 1, "pugixml.xml_text")) && (olua_is_number(L, 2)) && (olua_is_integer(L, 3))) {
             // bool set(float rhs, int precision)
             return _olua_fun_pugi_xml_text_set_float$2(L);
         // }
@@ -5054,6 +5158,31 @@ OLUA_LIB int luaopen_pugixml_xml_text(lua_State *L)
 }
 OLUA_END_DECLS
 
+static int _olua_fun_pugi_xml_node___eq(lua_State *L)
+{
+    try {
+        olua_startinvoke(L);
+
+        pugi::xml_node *self = nullptr;
+        pugi::xml_node *arg1;       /** r */
+
+        olua_to_object(L, 1, &self, "pugixml.xml_node");
+        olua_check_object(L, 2, &arg1, "pugixml.xml_node");
+
+        // @operator(operator==) bool operator==(const pugi::xml_node &r)
+        bool ret = (*self) == (*arg1);
+        int num_ret = olua_push_bool(L, ret);
+
+        olua_endinvoke(L);
+
+        return num_ret;
+    } catch (std::exception &e) {
+        lua_pushfstring(L, "pugi::xml_node::__eq(): %s", e.what());
+        luaL_error(L, olua_tostring(L, -1));
+        return 0;
+    }
+}
+
 static int _olua_fun_pugi_xml_node___gc(lua_State *L)
 {
     olua_startinvoke(L);
@@ -5064,6 +5193,56 @@ static int _olua_fun_pugi_xml_node___gc(lua_State *L)
     olua_endinvoke(L);
 
     return 0;
+}
+
+static int _olua_fun_pugi_xml_node___le(lua_State *L)
+{
+    try {
+        olua_startinvoke(L);
+
+        pugi::xml_node *self = nullptr;
+        pugi::xml_node *arg1;       /** r */
+
+        olua_to_object(L, 1, &self, "pugixml.xml_node");
+        olua_check_object(L, 2, &arg1, "pugixml.xml_node");
+
+        // @operator(operator<=) bool operator<=(const pugi::xml_node &r)
+        bool ret = (*self) <= (*arg1);
+        int num_ret = olua_push_bool(L, ret);
+
+        olua_endinvoke(L);
+
+        return num_ret;
+    } catch (std::exception &e) {
+        lua_pushfstring(L, "pugi::xml_node::__le(): %s", e.what());
+        luaL_error(L, olua_tostring(L, -1));
+        return 0;
+    }
+}
+
+static int _olua_fun_pugi_xml_node___lt(lua_State *L)
+{
+    try {
+        olua_startinvoke(L);
+
+        pugi::xml_node *self = nullptr;
+        pugi::xml_node *arg1;       /** r */
+
+        olua_to_object(L, 1, &self, "pugixml.xml_node");
+        olua_check_object(L, 2, &arg1, "pugixml.xml_node");
+
+        // @operator(operator<) bool operator<(const pugi::xml_node &r)
+        bool ret = (*self) < (*arg1);
+        int num_ret = olua_push_bool(L, ret);
+
+        olua_endinvoke(L);
+
+        return num_ret;
+    } catch (std::exception &e) {
+        lua_pushfstring(L, "pugi::xml_node::__lt(): %s", e.what());
+        luaL_error(L, olua_tostring(L, -1));
+        return 0;
+    }
 }
 
 static int _olua_fun_pugi_xml_node_append_attribute(lua_State *L)
@@ -5180,24 +5359,24 @@ static int _olua_fun_pugi_xml_node_append_buffer$3(lua_State *L)
 
 static int _olua_fun_pugi_xml_node_append_buffer(lua_State *L)
 {
-    int num_args = lua_gettop(L) - 1;
+    int num_args = lua_gettop(L);
 
-    if (num_args == 2) {
-        // if ((olua_is_object(L, 2, "void *")) && (olua_is_integer(L, 3))) {
+    if (num_args == 3) {
+        // if ((olua_is_object(L, 1, "pugixml.xml_node")) && (olua_is_object(L, 2, "void *")) && (olua_is_integer(L, 3))) {
             // pugi::xml_parse_result append_buffer(const void *contents, size_t size)
             return _olua_fun_pugi_xml_node_append_buffer$2(L);
         // }
     }
 
-    if (num_args == 3) {
-        // if ((olua_is_object(L, 2, "void *")) && (olua_is_integer(L, 3)) && (olua_is_integer(L, 4))) {
+    if (num_args == 4) {
+        // if ((olua_is_object(L, 1, "pugixml.xml_node")) && (olua_is_object(L, 2, "void *")) && (olua_is_integer(L, 3)) && (olua_is_integer(L, 4))) {
             // pugi::xml_parse_result append_buffer(const void *contents, size_t size, @optional unsigned int options)
             return _olua_fun_pugi_xml_node_append_buffer$3(L);
         // }
     }
 
-    if (num_args == 4) {
-        // if ((olua_is_object(L, 2, "void *")) && (olua_is_integer(L, 3)) && (olua_is_integer(L, 4)) && (olua_is_enum(L, 5))) {
+    if (num_args == 5) {
+        // if ((olua_is_object(L, 1, "pugixml.xml_node")) && (olua_is_object(L, 2, "void *")) && (olua_is_integer(L, 3)) && (olua_is_integer(L, 4)) && (olua_is_enum(L, 5))) {
             // pugi::xml_parse_result append_buffer(const void *contents, size_t size, @optional unsigned int options, @optional pugi::xml_encoding encoding)
             return _olua_fun_pugi_xml_node_append_buffer$1(L);
         // }
@@ -5283,20 +5462,20 @@ static int _olua_fun_pugi_xml_node_append_child$3(lua_State *L)
 
 static int _olua_fun_pugi_xml_node_append_child(lua_State *L)
 {
-    int num_args = lua_gettop(L) - 1;
+    int num_args = lua_gettop(L);
 
-    if (num_args == 0) {
+    if (num_args == 1) {
         // pugi::xml_node append_child()
         return _olua_fun_pugi_xml_node_append_child$2(L);
     }
 
-    if (num_args == 1) {
-        if ((olua_is_enum(L, 2))) {
+    if (num_args == 2) {
+        if ((olua_is_object(L, 1, "pugixml.xml_node")) && (olua_is_enum(L, 2))) {
             // pugi::xml_node append_child(@optional pugi::xml_node_type type)
             return _olua_fun_pugi_xml_node_append_child$1(L);
         }
 
-        // if ((olua_is_string(L, 2))) {
+        // if ((olua_is_object(L, 1, "pugixml.xml_node")) && (olua_is_string(L, 2))) {
             // pugi::xml_node append_child(const pugi::char_t *name)
             return _olua_fun_pugi_xml_node_append_child$3(L);
         // }
@@ -5359,15 +5538,15 @@ static int _olua_fun_pugi_xml_node_append_copy$2(lua_State *L)
 
 static int _olua_fun_pugi_xml_node_append_copy(lua_State *L)
 {
-    int num_args = lua_gettop(L) - 1;
+    int num_args = lua_gettop(L);
 
-    if (num_args == 1) {
-        if ((olua_is_object(L, 2, "pugixml.xml_attribute"))) {
+    if (num_args == 2) {
+        if ((olua_is_object(L, 1, "pugixml.xml_node")) && (olua_is_object(L, 2, "pugixml.xml_attribute"))) {
             // pugi::xml_attribute append_copy(const pugi::xml_attribute &proto)
             return _olua_fun_pugi_xml_node_append_copy$1(L);
         }
 
-        // if ((olua_is_object(L, 2, "pugixml.xml_node"))) {
+        // if ((olua_is_object(L, 1, "pugixml.xml_node")) && (olua_is_object(L, 2, "pugixml.xml_node"))) {
             // pugi::xml_node append_copy(const pugi::xml_node &proto)
             return _olua_fun_pugi_xml_node_append_copy$2(L);
         // }
@@ -5457,17 +5636,17 @@ static int _olua_fun_pugi_xml_node_attribute$2(lua_State *L)
 
 static int _olua_fun_pugi_xml_node_attribute(lua_State *L)
 {
-    int num_args = lua_gettop(L) - 1;
+    int num_args = lua_gettop(L);
 
-    if (num_args == 1) {
-        // if ((olua_is_string(L, 2))) {
+    if (num_args == 2) {
+        // if ((olua_is_object(L, 1, "pugixml.xml_node")) && (olua_is_string(L, 2))) {
             // pugi::xml_attribute attribute(const pugi::char_t *name)
             return _olua_fun_pugi_xml_node_attribute$1(L);
         // }
     }
 
-    if (num_args == 2) {
-        // if ((olua_is_string(L, 2)) && (olua_is_object(L, 3, "pugixml.xml_attribute"))) {
+    if (num_args == 3) {
+        // if ((olua_is_object(L, 1, "pugixml.xml_node")) && (olua_is_string(L, 2)) && (olua_is_object(L, 3, "pugixml.xml_attribute"))) {
             // pugi::xml_attribute attribute(const pugi::char_t *name, pugi::xml_attribute &hint)
             return _olua_fun_pugi_xml_node_attribute$2(L);
         // }
@@ -5553,15 +5732,15 @@ static int _olua_fun_pugi_xml_node_child_value$2(lua_State *L)
 
 static int _olua_fun_pugi_xml_node_child_value(lua_State *L)
 {
-    int num_args = lua_gettop(L) - 1;
+    int num_args = lua_gettop(L);
 
-    if (num_args == 0) {
+    if (num_args == 1) {
         // const pugi::char_t *child_value()
         return _olua_fun_pugi_xml_node_child_value$1(L);
     }
 
-    if (num_args == 1) {
-        // if ((olua_is_string(L, 2))) {
+    if (num_args == 2) {
+        // if ((olua_is_object(L, 1, "pugixml.xml_node")) && (olua_is_string(L, 2))) {
             // const pugi::char_t *child_value(const pugi::char_t *name)
             return _olua_fun_pugi_xml_node_child_value$2(L);
         // }
@@ -5765,17 +5944,17 @@ static int _olua_fun_pugi_xml_node_find_child_by_attribute$2(lua_State *L)
 
 static int _olua_fun_pugi_xml_node_find_child_by_attribute(lua_State *L)
 {
-    int num_args = lua_gettop(L) - 1;
+    int num_args = lua_gettop(L);
 
-    if (num_args == 2) {
-        // if ((olua_is_string(L, 2)) && (olua_is_string(L, 3))) {
+    if (num_args == 3) {
+        // if ((olua_is_object(L, 1, "pugixml.xml_node")) && (olua_is_string(L, 2)) && (olua_is_string(L, 3))) {
             // pugi::xml_node find_child_by_attribute(const pugi::char_t *attr_name, const pugi::char_t *attr_value)
             return _olua_fun_pugi_xml_node_find_child_by_attribute$2(L);
         // }
     }
 
-    if (num_args == 3) {
-        // if ((olua_is_string(L, 2)) && (olua_is_string(L, 3)) && (olua_is_string(L, 4))) {
+    if (num_args == 4) {
+        // if ((olua_is_object(L, 1, "pugixml.xml_node")) && (olua_is_string(L, 2)) && (olua_is_string(L, 3)) && (olua_is_string(L, 4))) {
             // pugi::xml_node find_child_by_attribute(const pugi::char_t *name, const pugi::char_t *attr_name, const pugi::char_t *attr_value)
             return _olua_fun_pugi_xml_node_find_child_by_attribute$1(L);
         // }
@@ -5942,17 +6121,17 @@ static int _olua_fun_pugi_xml_node_first_element_by_path$2(lua_State *L)
 
 static int _olua_fun_pugi_xml_node_first_element_by_path(lua_State *L)
 {
-    int num_args = lua_gettop(L) - 1;
+    int num_args = lua_gettop(L);
 
-    if (num_args == 1) {
-        // if ((olua_is_string(L, 2))) {
+    if (num_args == 2) {
+        // if ((olua_is_object(L, 1, "pugixml.xml_node")) && (olua_is_string(L, 2))) {
             // pugi::xml_node first_element_by_path(const pugi::char_t *path)
             return _olua_fun_pugi_xml_node_first_element_by_path$2(L);
         // }
     }
 
-    if (num_args == 2) {
-        // if ((olua_is_string(L, 2)) && (olua_is_integer(L, 3))) {
+    if (num_args == 3) {
+        // if ((olua_is_object(L, 1, "pugixml.xml_node")) && (olua_is_string(L, 2)) && (olua_is_integer(L, 3))) {
             // pugi::xml_node first_element_by_path(const pugi::char_t *path, @optional pugi::char_t delimiter)
             return _olua_fun_pugi_xml_node_first_element_by_path$1(L);
         // }
@@ -6096,15 +6275,15 @@ static int _olua_fun_pugi_xml_node_insert_child_after$2(lua_State *L)
 
 static int _olua_fun_pugi_xml_node_insert_child_after(lua_State *L)
 {
-    int num_args = lua_gettop(L) - 1;
+    int num_args = lua_gettop(L);
 
-    if (num_args == 2) {
-        if ((olua_is_enum(L, 2)) && (olua_is_object(L, 3, "pugixml.xml_node"))) {
+    if (num_args == 3) {
+        if ((olua_is_object(L, 1, "pugixml.xml_node")) && (olua_is_enum(L, 2)) && (olua_is_object(L, 3, "pugixml.xml_node"))) {
             // pugi::xml_node insert_child_after(pugi::xml_node_type type, const pugi::xml_node &node)
             return _olua_fun_pugi_xml_node_insert_child_after$1(L);
         }
 
-        // if ((olua_is_string(L, 2)) && (olua_is_object(L, 3, "pugixml.xml_node"))) {
+        // if ((olua_is_object(L, 1, "pugixml.xml_node")) && (olua_is_string(L, 2)) && (olua_is_object(L, 3, "pugixml.xml_node"))) {
             // pugi::xml_node insert_child_after(const pugi::char_t *name, const pugi::xml_node &node)
             return _olua_fun_pugi_xml_node_insert_child_after$2(L);
         // }
@@ -6171,15 +6350,15 @@ static int _olua_fun_pugi_xml_node_insert_child_before$2(lua_State *L)
 
 static int _olua_fun_pugi_xml_node_insert_child_before(lua_State *L)
 {
-    int num_args = lua_gettop(L) - 1;
+    int num_args = lua_gettop(L);
 
-    if (num_args == 2) {
-        if ((olua_is_enum(L, 2)) && (olua_is_object(L, 3, "pugixml.xml_node"))) {
+    if (num_args == 3) {
+        if ((olua_is_object(L, 1, "pugixml.xml_node")) && (olua_is_enum(L, 2)) && (olua_is_object(L, 3, "pugixml.xml_node"))) {
             // pugi::xml_node insert_child_before(pugi::xml_node_type type, const pugi::xml_node &node)
             return _olua_fun_pugi_xml_node_insert_child_before$1(L);
         }
 
-        // if ((olua_is_string(L, 2)) && (olua_is_object(L, 3, "pugixml.xml_node"))) {
+        // if ((olua_is_object(L, 1, "pugixml.xml_node")) && (olua_is_string(L, 2)) && (olua_is_object(L, 3, "pugixml.xml_node"))) {
             // pugi::xml_node insert_child_before(const pugi::char_t *name, const pugi::xml_node &node)
             return _olua_fun_pugi_xml_node_insert_child_before$2(L);
         // }
@@ -6246,15 +6425,15 @@ static int _olua_fun_pugi_xml_node_insert_copy_after$2(lua_State *L)
 
 static int _olua_fun_pugi_xml_node_insert_copy_after(lua_State *L)
 {
-    int num_args = lua_gettop(L) - 1;
+    int num_args = lua_gettop(L);
 
-    if (num_args == 2) {
-        if ((olua_is_object(L, 2, "pugixml.xml_attribute")) && (olua_is_object(L, 3, "pugixml.xml_attribute"))) {
+    if (num_args == 3) {
+        if ((olua_is_object(L, 1, "pugixml.xml_node")) && (olua_is_object(L, 2, "pugixml.xml_attribute")) && (olua_is_object(L, 3, "pugixml.xml_attribute"))) {
             // pugi::xml_attribute insert_copy_after(const pugi::xml_attribute &proto, const pugi::xml_attribute &attr)
             return _olua_fun_pugi_xml_node_insert_copy_after$1(L);
         }
 
-        // if ((olua_is_object(L, 2, "pugixml.xml_node")) && (olua_is_object(L, 3, "pugixml.xml_node"))) {
+        // if ((olua_is_object(L, 1, "pugixml.xml_node")) && (olua_is_object(L, 2, "pugixml.xml_node")) && (olua_is_object(L, 3, "pugixml.xml_node"))) {
             // pugi::xml_node insert_copy_after(const pugi::xml_node &proto, const pugi::xml_node &node)
             return _olua_fun_pugi_xml_node_insert_copy_after$2(L);
         // }
@@ -6321,15 +6500,15 @@ static int _olua_fun_pugi_xml_node_insert_copy_before$2(lua_State *L)
 
 static int _olua_fun_pugi_xml_node_insert_copy_before(lua_State *L)
 {
-    int num_args = lua_gettop(L) - 1;
+    int num_args = lua_gettop(L);
 
-    if (num_args == 2) {
-        if ((olua_is_object(L, 2, "pugixml.xml_attribute")) && (olua_is_object(L, 3, "pugixml.xml_attribute"))) {
+    if (num_args == 3) {
+        if ((olua_is_object(L, 1, "pugixml.xml_node")) && (olua_is_object(L, 2, "pugixml.xml_attribute")) && (olua_is_object(L, 3, "pugixml.xml_attribute"))) {
             // pugi::xml_attribute insert_copy_before(const pugi::xml_attribute &proto, const pugi::xml_attribute &attr)
             return _olua_fun_pugi_xml_node_insert_copy_before$1(L);
         }
 
-        // if ((olua_is_object(L, 2, "pugixml.xml_node")) && (olua_is_object(L, 3, "pugixml.xml_node"))) {
+        // if ((olua_is_object(L, 1, "pugixml.xml_node")) && (olua_is_object(L, 2, "pugixml.xml_node")) && (olua_is_object(L, 3, "pugixml.xml_node"))) {
             // pugi::xml_node insert_copy_before(const pugi::xml_node &proto, const pugi::xml_node &node)
             return _olua_fun_pugi_xml_node_insert_copy_before$2(L);
         // }
@@ -6533,15 +6712,15 @@ static int _olua_fun_pugi_xml_node_next_sibling$2(lua_State *L)
 
 static int _olua_fun_pugi_xml_node_next_sibling(lua_State *L)
 {
-    int num_args = lua_gettop(L) - 1;
+    int num_args = lua_gettop(L);
 
-    if (num_args == 0) {
+    if (num_args == 1) {
         // pugi::xml_node next_sibling()
         return _olua_fun_pugi_xml_node_next_sibling$1(L);
     }
 
-    if (num_args == 1) {
-        // if ((olua_is_string(L, 2))) {
+    if (num_args == 2) {
+        // if ((olua_is_object(L, 1, "pugixml.xml_node")) && (olua_is_string(L, 2))) {
             // pugi::xml_node next_sibling(const pugi::char_t *name)
             return _olua_fun_pugi_xml_node_next_sibling$2(L);
         // }
@@ -6648,15 +6827,15 @@ static int _olua_fun_pugi_xml_node_path$2(lua_State *L)
 
 static int _olua_fun_pugi_xml_node_path(lua_State *L)
 {
-    int num_args = lua_gettop(L) - 1;
+    int num_args = lua_gettop(L);
 
-    if (num_args == 0) {
+    if (num_args == 1) {
         // pugi::string_t path()
         return _olua_fun_pugi_xml_node_path$2(L);
     }
 
-    if (num_args == 1) {
-        // if ((olua_is_integer(L, 2))) {
+    if (num_args == 2) {
+        // if ((olua_is_object(L, 1, "pugixml.xml_node")) && (olua_is_integer(L, 2))) {
             // pugi::string_t path(@optional pugi::char_t delimiter)
             return _olua_fun_pugi_xml_node_path$1(L);
         // }
@@ -6767,20 +6946,20 @@ static int _olua_fun_pugi_xml_node_prepend_child$3(lua_State *L)
 
 static int _olua_fun_pugi_xml_node_prepend_child(lua_State *L)
 {
-    int num_args = lua_gettop(L) - 1;
+    int num_args = lua_gettop(L);
 
-    if (num_args == 0) {
+    if (num_args == 1) {
         // pugi::xml_node prepend_child()
         return _olua_fun_pugi_xml_node_prepend_child$2(L);
     }
 
-    if (num_args == 1) {
-        if ((olua_is_enum(L, 2))) {
+    if (num_args == 2) {
+        if ((olua_is_object(L, 1, "pugixml.xml_node")) && (olua_is_enum(L, 2))) {
             // pugi::xml_node prepend_child(@optional pugi::xml_node_type type)
             return _olua_fun_pugi_xml_node_prepend_child$1(L);
         }
 
-        // if ((olua_is_string(L, 2))) {
+        // if ((olua_is_object(L, 1, "pugixml.xml_node")) && (olua_is_string(L, 2))) {
             // pugi::xml_node prepend_child(const pugi::char_t *name)
             return _olua_fun_pugi_xml_node_prepend_child$3(L);
         // }
@@ -6843,15 +7022,15 @@ static int _olua_fun_pugi_xml_node_prepend_copy$2(lua_State *L)
 
 static int _olua_fun_pugi_xml_node_prepend_copy(lua_State *L)
 {
-    int num_args = lua_gettop(L) - 1;
+    int num_args = lua_gettop(L);
 
-    if (num_args == 1) {
-        if ((olua_is_object(L, 2, "pugixml.xml_attribute"))) {
+    if (num_args == 2) {
+        if ((olua_is_object(L, 1, "pugixml.xml_node")) && (olua_is_object(L, 2, "pugixml.xml_attribute"))) {
             // pugi::xml_attribute prepend_copy(const pugi::xml_attribute &proto)
             return _olua_fun_pugi_xml_node_prepend_copy$1(L);
         }
 
-        // if ((olua_is_object(L, 2, "pugixml.xml_node"))) {
+        // if ((olua_is_object(L, 1, "pugixml.xml_node")) && (olua_is_object(L, 2, "pugixml.xml_node"))) {
             // pugi::xml_node prepend_copy(const pugi::xml_node &proto)
             return _olua_fun_pugi_xml_node_prepend_copy$2(L);
         // }
@@ -6937,15 +7116,15 @@ static int _olua_fun_pugi_xml_node_previous_sibling$2(lua_State *L)
 
 static int _olua_fun_pugi_xml_node_previous_sibling(lua_State *L)
 {
-    int num_args = lua_gettop(L) - 1;
+    int num_args = lua_gettop(L);
 
-    if (num_args == 0) {
+    if (num_args == 1) {
         // pugi::xml_node previous_sibling()
         return _olua_fun_pugi_xml_node_previous_sibling$1(L);
     }
 
-    if (num_args == 1) {
-        // if ((olua_is_string(L, 2))) {
+    if (num_args == 2) {
+        // if ((olua_is_object(L, 1, "pugixml.xml_node")) && (olua_is_string(L, 2))) {
             // pugi::xml_node previous_sibling(const pugi::char_t *name)
             return _olua_fun_pugi_xml_node_previous_sibling$2(L);
         // }
@@ -7098,38 +7277,38 @@ static int _olua_fun_pugi_xml_node_print$5(lua_State *L)
 
 static int _olua_fun_pugi_xml_node_print(lua_State *L)
 {
-    int num_args = lua_gettop(L) - 1;
+    int num_args = lua_gettop(L);
 
-    if (num_args == 1) {
-        // if ((olua_is_object(L, 2, "pugixml.xml_writer"))) {
+    if (num_args == 2) {
+        // if ((olua_is_object(L, 1, "pugixml.xml_node")) && (olua_is_object(L, 2, "pugixml.xml_writer"))) {
             // void print(pugi::xml_writer &writer)
             return _olua_fun_pugi_xml_node_print$2(L);
         // }
     }
 
-    if (num_args == 2) {
-        // if ((olua_is_object(L, 2, "pugixml.xml_writer")) && (olua_is_string(L, 3))) {
+    if (num_args == 3) {
+        // if ((olua_is_object(L, 1, "pugixml.xml_node")) && (olua_is_object(L, 2, "pugixml.xml_writer")) && (olua_is_string(L, 3))) {
             // void print(pugi::xml_writer &writer, @optional const pugi::char_t *indent)
             return _olua_fun_pugi_xml_node_print$3(L);
         // }
     }
 
-    if (num_args == 3) {
-        // if ((olua_is_object(L, 2, "pugixml.xml_writer")) && (olua_is_string(L, 3)) && (olua_is_integer(L, 4))) {
+    if (num_args == 4) {
+        // if ((olua_is_object(L, 1, "pugixml.xml_node")) && (olua_is_object(L, 2, "pugixml.xml_writer")) && (olua_is_string(L, 3)) && (olua_is_integer(L, 4))) {
             // void print(pugi::xml_writer &writer, @optional const pugi::char_t *indent, @optional unsigned int flags)
             return _olua_fun_pugi_xml_node_print$4(L);
         // }
     }
 
-    if (num_args == 4) {
-        // if ((olua_is_object(L, 2, "pugixml.xml_writer")) && (olua_is_string(L, 3)) && (olua_is_integer(L, 4)) && (olua_is_enum(L, 5))) {
+    if (num_args == 5) {
+        // if ((olua_is_object(L, 1, "pugixml.xml_node")) && (olua_is_object(L, 2, "pugixml.xml_writer")) && (olua_is_string(L, 3)) && (olua_is_integer(L, 4)) && (olua_is_enum(L, 5))) {
             // void print(pugi::xml_writer &writer, @optional const pugi::char_t *indent, @optional unsigned int flags, @optional pugi::xml_encoding encoding)
             return _olua_fun_pugi_xml_node_print$5(L);
         // }
     }
 
-    if (num_args == 5) {
-        // if ((olua_is_object(L, 2, "pugixml.xml_writer")) && (olua_is_string(L, 3)) && (olua_is_integer(L, 4)) && (olua_is_enum(L, 5)) && (olua_is_integer(L, 6))) {
+    if (num_args == 6) {
+        // if ((olua_is_object(L, 1, "pugixml.xml_node")) && (olua_is_object(L, 2, "pugixml.xml_writer")) && (olua_is_string(L, 3)) && (olua_is_integer(L, 4)) && (olua_is_enum(L, 5)) && (olua_is_integer(L, 6))) {
             // void print(pugi::xml_writer &writer, @optional const pugi::char_t *indent, @optional unsigned int flags, @optional pugi::xml_encoding encoding, @optional unsigned int depth)
             return _olua_fun_pugi_xml_node_print$1(L);
         // }
@@ -7192,15 +7371,15 @@ static int _olua_fun_pugi_xml_node_remove_attribute$2(lua_State *L)
 
 static int _olua_fun_pugi_xml_node_remove_attribute(lua_State *L)
 {
-    int num_args = lua_gettop(L) - 1;
+    int num_args = lua_gettop(L);
 
-    if (num_args == 1) {
-        if ((olua_is_object(L, 2, "pugixml.xml_attribute"))) {
+    if (num_args == 2) {
+        if ((olua_is_object(L, 1, "pugixml.xml_node")) && (olua_is_object(L, 2, "pugixml.xml_attribute"))) {
             // bool remove_attribute(const pugi::xml_attribute &a)
             return _olua_fun_pugi_xml_node_remove_attribute$1(L);
         }
 
-        // if ((olua_is_string(L, 2))) {
+        // if ((olua_is_object(L, 1, "pugixml.xml_node")) && (olua_is_string(L, 2))) {
             // bool remove_attribute(const pugi::char_t *name)
             return _olua_fun_pugi_xml_node_remove_attribute$2(L);
         // }
@@ -7286,15 +7465,15 @@ static int _olua_fun_pugi_xml_node_remove_child$2(lua_State *L)
 
 static int _olua_fun_pugi_xml_node_remove_child(lua_State *L)
 {
-    int num_args = lua_gettop(L) - 1;
+    int num_args = lua_gettop(L);
 
-    if (num_args == 1) {
-        if ((olua_is_object(L, 2, "pugixml.xml_node"))) {
+    if (num_args == 2) {
+        if ((olua_is_object(L, 1, "pugixml.xml_node")) && (olua_is_object(L, 2, "pugixml.xml_node"))) {
             // bool remove_child(const pugi::xml_node &n)
             return _olua_fun_pugi_xml_node_remove_child$1(L);
         }
 
-        // if ((olua_is_string(L, 2))) {
+        // if ((olua_is_object(L, 1, "pugixml.xml_node")) && (olua_is_string(L, 2))) {
             // bool remove_child(const pugi::char_t *name)
             return _olua_fun_pugi_xml_node_remove_child$2(L);
         // }
@@ -7430,22 +7609,22 @@ static int _olua_fun_pugi_xml_node_select_node$3(lua_State *L)
 
 static int _olua_fun_pugi_xml_node_select_node(lua_State *L)
 {
-    int num_args = lua_gettop(L) - 1;
+    int num_args = lua_gettop(L);
 
-    if (num_args == 1) {
-        if ((olua_is_string(L, 2))) {
+    if (num_args == 2) {
+        if ((olua_is_object(L, 1, "pugixml.xml_node")) && (olua_is_string(L, 2))) {
             // pugi::xpath_node select_node(const pugi::char_t *query)
             return _olua_fun_pugi_xml_node_select_node$2(L);
         }
 
-        // if ((olua_is_object(L, 2, "pugixml.xpath_query"))) {
+        // if ((olua_is_object(L, 1, "pugixml.xml_node")) && (olua_is_object(L, 2, "pugixml.xpath_query"))) {
             // pugi::xpath_node select_node(const pugi::xpath_query &query)
             return _olua_fun_pugi_xml_node_select_node$3(L);
         // }
     }
 
-    if (num_args == 2) {
-        // if ((olua_is_string(L, 2)) && (olua_is_object(L, 3, "pugixml.xpath_variable_set"))) {
+    if (num_args == 3) {
+        // if ((olua_is_object(L, 1, "pugixml.xml_node")) && (olua_is_string(L, 2)) && (olua_is_object(L, 3, "pugixml.xpath_variable_set"))) {
             // pugi::xpath_node select_node(const pugi::char_t *query, @optional pugi::xpath_variable_set *variables)
             return _olua_fun_pugi_xml_node_select_node$1(L);
         // }
@@ -7535,22 +7714,22 @@ static int _olua_fun_pugi_xml_node_select_nodes$3(lua_State *L)
 
 static int _olua_fun_pugi_xml_node_select_nodes(lua_State *L)
 {
-    int num_args = lua_gettop(L) - 1;
+    int num_args = lua_gettop(L);
 
-    if (num_args == 1) {
-        if ((olua_is_string(L, 2))) {
+    if (num_args == 2) {
+        if ((olua_is_object(L, 1, "pugixml.xml_node")) && (olua_is_string(L, 2))) {
             // pugi::xpath_node_set select_nodes(const pugi::char_t *query)
             return _olua_fun_pugi_xml_node_select_nodes$2(L);
         }
 
-        // if ((olua_is_object(L, 2, "pugixml.xpath_query"))) {
+        // if ((olua_is_object(L, 1, "pugixml.xml_node")) && (olua_is_object(L, 2, "pugixml.xpath_query"))) {
             // pugi::xpath_node_set select_nodes(const pugi::xpath_query &query)
             return _olua_fun_pugi_xml_node_select_nodes$3(L);
         // }
     }
 
-    if (num_args == 2) {
-        // if ((olua_is_string(L, 2)) && (olua_is_object(L, 3, "pugixml.xpath_variable_set"))) {
+    if (num_args == 3) {
+        // if ((olua_is_object(L, 1, "pugixml.xml_node")) && (olua_is_string(L, 2)) && (olua_is_object(L, 3, "pugixml.xpath_variable_set"))) {
             // pugi::xpath_node_set select_nodes(const pugi::char_t *query, @optional pugi::xpath_variable_set *variables)
             return _olua_fun_pugi_xml_node_select_nodes$1(L);
         // }
@@ -7615,17 +7794,17 @@ static int _olua_fun_pugi_xml_node_set_name$2(lua_State *L)
 
 static int _olua_fun_pugi_xml_node_set_name(lua_State *L)
 {
-    int num_args = lua_gettop(L) - 1;
+    int num_args = lua_gettop(L);
 
-    if (num_args == 1) {
-        // if ((olua_is_string(L, 2))) {
+    if (num_args == 2) {
+        // if ((olua_is_object(L, 1, "pugixml.xml_node")) && (olua_is_string(L, 2))) {
             // bool set_name(const pugi::char_t *rhs)
             return _olua_fun_pugi_xml_node_set_name$1(L);
         // }
     }
 
-    if (num_args == 2) {
-        // if ((olua_is_string(L, 2)) && (olua_is_integer(L, 3))) {
+    if (num_args == 3) {
+        // if ((olua_is_object(L, 1, "pugixml.xml_node")) && (olua_is_string(L, 2)) && (olua_is_integer(L, 3))) {
             // bool set_name(const pugi::char_t *rhs, size_t size)
             return _olua_fun_pugi_xml_node_set_name$2(L);
         // }
@@ -7690,17 +7869,17 @@ static int _olua_fun_pugi_xml_node_set_value$2(lua_State *L)
 
 static int _olua_fun_pugi_xml_node_set_value(lua_State *L)
 {
-    int num_args = lua_gettop(L) - 1;
+    int num_args = lua_gettop(L);
 
-    if (num_args == 1) {
-        // if ((olua_is_string(L, 2))) {
+    if (num_args == 2) {
+        // if ((olua_is_object(L, 1, "pugixml.xml_node")) && (olua_is_string(L, 2))) {
             // bool set_value(const pugi::char_t *rhs)
             return _olua_fun_pugi_xml_node_set_value$1(L);
         // }
     }
 
-    if (num_args == 2) {
-        // if ((olua_is_string(L, 2)) && (olua_is_integer(L, 3))) {
+    if (num_args == 3) {
+        // if ((olua_is_object(L, 1, "pugixml.xml_node")) && (olua_is_string(L, 2)) && (olua_is_integer(L, 3))) {
             // bool set_value(const pugi::char_t *rhs, size_t size)
             return _olua_fun_pugi_xml_node_set_value$2(L);
         // }
@@ -7808,7 +7987,10 @@ static int _olua_fun_pugi_xml_node_value(lua_State *L)
 static int _olua_cls_pugixml_xml_node(lua_State *L)
 {
     oluacls_class<pugi::xml_node>(L, "pugixml.xml_node");
+    oluacls_func(L, "__eq", _olua_fun_pugi_xml_node___eq);
     oluacls_func(L, "__gc", _olua_fun_pugi_xml_node___gc);
+    oluacls_func(L, "__le", _olua_fun_pugi_xml_node___le);
+    oluacls_func(L, "__lt", _olua_fun_pugi_xml_node___lt);
     oluacls_func(L, "append_attribute", _olua_fun_pugi_xml_node_append_attribute);
     oluacls_func(L, "append_buffer", _olua_fun_pugi_xml_node_append_buffer);
     oluacls_func(L, "append_child", _olua_fun_pugi_xml_node_append_child);
@@ -7988,24 +8170,24 @@ static int _olua_fun_pugi_xml_document_load_buffer$3(lua_State *L)
 
 static int _olua_fun_pugi_xml_document_load_buffer(lua_State *L)
 {
-    int num_args = lua_gettop(L) - 1;
+    int num_args = lua_gettop(L);
 
-    if (num_args == 2) {
-        // if ((olua_is_object(L, 2, "void *")) && (olua_is_integer(L, 3))) {
+    if (num_args == 3) {
+        // if ((olua_is_object(L, 1, "pugixml.xml_document")) && (olua_is_object(L, 2, "void *")) && (olua_is_integer(L, 3))) {
             // pugi::xml_parse_result load_buffer(const void *contents, size_t size)
             return _olua_fun_pugi_xml_document_load_buffer$2(L);
         // }
     }
 
-    if (num_args == 3) {
-        // if ((olua_is_object(L, 2, "void *")) && (olua_is_integer(L, 3)) && (olua_is_integer(L, 4))) {
+    if (num_args == 4) {
+        // if ((olua_is_object(L, 1, "pugixml.xml_document")) && (olua_is_object(L, 2, "void *")) && (olua_is_integer(L, 3)) && (olua_is_integer(L, 4))) {
             // pugi::xml_parse_result load_buffer(const void *contents, size_t size, @optional unsigned int options)
             return _olua_fun_pugi_xml_document_load_buffer$3(L);
         // }
     }
 
-    if (num_args == 4) {
-        // if ((olua_is_object(L, 2, "void *")) && (olua_is_integer(L, 3)) && (olua_is_integer(L, 4)) && (olua_is_enum(L, 5))) {
+    if (num_args == 5) {
+        // if ((olua_is_object(L, 1, "pugixml.xml_document")) && (olua_is_object(L, 2, "void *")) && (olua_is_integer(L, 3)) && (olua_is_integer(L, 4)) && (olua_is_enum(L, 5))) {
             // pugi::xml_parse_result load_buffer(const void *contents, size_t size, @optional unsigned int options, @optional pugi::xml_encoding encoding)
             return _olua_fun_pugi_xml_document_load_buffer$1(L);
         // }
@@ -8105,24 +8287,24 @@ static int _olua_fun_pugi_xml_document_load_buffer_inplace$3(lua_State *L)
 
 static int _olua_fun_pugi_xml_document_load_buffer_inplace(lua_State *L)
 {
-    int num_args = lua_gettop(L) - 1;
+    int num_args = lua_gettop(L);
 
-    if (num_args == 2) {
-        // if ((olua_is_object(L, 2, "void *")) && (olua_is_integer(L, 3))) {
+    if (num_args == 3) {
+        // if ((olua_is_object(L, 1, "pugixml.xml_document")) && (olua_is_object(L, 2, "void *")) && (olua_is_integer(L, 3))) {
             // pugi::xml_parse_result load_buffer_inplace(void *contents, size_t size)
             return _olua_fun_pugi_xml_document_load_buffer_inplace$2(L);
         // }
     }
 
-    if (num_args == 3) {
-        // if ((olua_is_object(L, 2, "void *")) && (olua_is_integer(L, 3)) && (olua_is_integer(L, 4))) {
+    if (num_args == 4) {
+        // if ((olua_is_object(L, 1, "pugixml.xml_document")) && (olua_is_object(L, 2, "void *")) && (olua_is_integer(L, 3)) && (olua_is_integer(L, 4))) {
             // pugi::xml_parse_result load_buffer_inplace(void *contents, size_t size, @optional unsigned int options)
             return _olua_fun_pugi_xml_document_load_buffer_inplace$3(L);
         // }
     }
 
-    if (num_args == 4) {
-        // if ((olua_is_object(L, 2, "void *")) && (olua_is_integer(L, 3)) && (olua_is_integer(L, 4)) && (olua_is_enum(L, 5))) {
+    if (num_args == 5) {
+        // if ((olua_is_object(L, 1, "pugixml.xml_document")) && (olua_is_object(L, 2, "void *")) && (olua_is_integer(L, 3)) && (olua_is_integer(L, 4)) && (olua_is_enum(L, 5))) {
             // pugi::xml_parse_result load_buffer_inplace(void *contents, size_t size, @optional unsigned int options, @optional pugi::xml_encoding encoding)
             return _olua_fun_pugi_xml_document_load_buffer_inplace$1(L);
         // }
@@ -8222,24 +8404,24 @@ static int _olua_fun_pugi_xml_document_load_buffer_inplace_own$3(lua_State *L)
 
 static int _olua_fun_pugi_xml_document_load_buffer_inplace_own(lua_State *L)
 {
-    int num_args = lua_gettop(L) - 1;
+    int num_args = lua_gettop(L);
 
-    if (num_args == 2) {
-        // if ((olua_is_object(L, 2, "void *")) && (olua_is_integer(L, 3))) {
+    if (num_args == 3) {
+        // if ((olua_is_object(L, 1, "pugixml.xml_document")) && (olua_is_object(L, 2, "void *")) && (olua_is_integer(L, 3))) {
             // pugi::xml_parse_result load_buffer_inplace_own(void *contents, size_t size)
             return _olua_fun_pugi_xml_document_load_buffer_inplace_own$2(L);
         // }
     }
 
-    if (num_args == 3) {
-        // if ((olua_is_object(L, 2, "void *")) && (olua_is_integer(L, 3)) && (olua_is_integer(L, 4))) {
+    if (num_args == 4) {
+        // if ((olua_is_object(L, 1, "pugixml.xml_document")) && (olua_is_object(L, 2, "void *")) && (olua_is_integer(L, 3)) && (olua_is_integer(L, 4))) {
             // pugi::xml_parse_result load_buffer_inplace_own(void *contents, size_t size, @optional unsigned int options)
             return _olua_fun_pugi_xml_document_load_buffer_inplace_own$3(L);
         // }
     }
 
-    if (num_args == 4) {
-        // if ((olua_is_object(L, 2, "void *")) && (olua_is_integer(L, 3)) && (olua_is_integer(L, 4)) && (olua_is_enum(L, 5))) {
+    if (num_args == 5) {
+        // if ((olua_is_object(L, 1, "pugixml.xml_document")) && (olua_is_object(L, 2, "void *")) && (olua_is_integer(L, 3)) && (olua_is_integer(L, 4)) && (olua_is_enum(L, 5))) {
             // pugi::xml_parse_result load_buffer_inplace_own(void *contents, size_t size, @optional unsigned int options, @optional pugi::xml_encoding encoding)
             return _olua_fun_pugi_xml_document_load_buffer_inplace_own$1(L);
         // }
@@ -8333,24 +8515,24 @@ static int _olua_fun_pugi_xml_document_load_file$3(lua_State *L)
 
 static int _olua_fun_pugi_xml_document_load_file(lua_State *L)
 {
-    int num_args = lua_gettop(L) - 1;
+    int num_args = lua_gettop(L);
 
-    if (num_args == 1) {
-        // if ((olua_is_string(L, 2))) {
+    if (num_args == 2) {
+        // if ((olua_is_object(L, 1, "pugixml.xml_document")) && (olua_is_string(L, 2))) {
             // pugi::xml_parse_result load_file(const char *path)
             return _olua_fun_pugi_xml_document_load_file$2(L);
         // }
     }
 
-    if (num_args == 2) {
-        // if ((olua_is_string(L, 2)) && (olua_is_integer(L, 3))) {
+    if (num_args == 3) {
+        // if ((olua_is_object(L, 1, "pugixml.xml_document")) && (olua_is_string(L, 2)) && (olua_is_integer(L, 3))) {
             // pugi::xml_parse_result load_file(const char *path, @optional unsigned int options)
             return _olua_fun_pugi_xml_document_load_file$3(L);
         // }
     }
 
-    if (num_args == 3) {
-        // if ((olua_is_string(L, 2)) && (olua_is_integer(L, 3)) && (olua_is_enum(L, 4))) {
+    if (num_args == 4) {
+        // if ((olua_is_object(L, 1, "pugixml.xml_document")) && (olua_is_string(L, 2)) && (olua_is_integer(L, 3)) && (olua_is_enum(L, 4))) {
             // pugi::xml_parse_result load_file(const char *path, @optional unsigned int options, @optional pugi::xml_encoding encoding)
             return _olua_fun_pugi_xml_document_load_file$1(L);
         // }
@@ -8415,17 +8597,17 @@ static int _olua_fun_pugi_xml_document_load_string$2(lua_State *L)
 
 static int _olua_fun_pugi_xml_document_load_string(lua_State *L)
 {
-    int num_args = lua_gettop(L) - 1;
+    int num_args = lua_gettop(L);
 
-    if (num_args == 1) {
-        // if ((olua_is_string(L, 2))) {
+    if (num_args == 2) {
+        // if ((olua_is_object(L, 1, "pugixml.xml_document")) && (olua_is_string(L, 2))) {
             // pugi::xml_parse_result load_string(const pugi::char_t *contents)
             return _olua_fun_pugi_xml_document_load_string$2(L);
         // }
     }
 
-    if (num_args == 2) {
-        // if ((olua_is_string(L, 2)) && (olua_is_integer(L, 3))) {
+    if (num_args == 3) {
+        // if ((olua_is_object(L, 1, "pugixml.xml_document")) && (olua_is_string(L, 2)) && (olua_is_integer(L, 3))) {
             // pugi::xml_parse_result load_string(const pugi::char_t *contents, @optional unsigned int options)
             return _olua_fun_pugi_xml_document_load_string$1(L);
         // }
@@ -8504,15 +8686,15 @@ static int _olua_fun_pugi_xml_document_reset$2(lua_State *L)
 
 static int _olua_fun_pugi_xml_document_reset(lua_State *L)
 {
-    int num_args = lua_gettop(L) - 1;
+    int num_args = lua_gettop(L);
 
-    if (num_args == 0) {
+    if (num_args == 1) {
         // void reset()
         return _olua_fun_pugi_xml_document_reset$1(L);
     }
 
-    if (num_args == 1) {
-        // if ((olua_is_object(L, 2, "pugixml.xml_document"))) {
+    if (num_args == 2) {
+        // if ((olua_is_object(L, 1, "pugixml.xml_document")) && (olua_is_object(L, 2, "pugixml.xml_document"))) {
             // void reset(const pugi::xml_document &proto)
             return _olua_fun_pugi_xml_document_reset$2(L);
         // }
@@ -8633,31 +8815,31 @@ static int _olua_fun_pugi_xml_document_save$4(lua_State *L)
 
 static int _olua_fun_pugi_xml_document_save(lua_State *L)
 {
-    int num_args = lua_gettop(L) - 1;
+    int num_args = lua_gettop(L);
 
-    if (num_args == 1) {
-        // if ((olua_is_object(L, 2, "pugixml.xml_writer"))) {
+    if (num_args == 2) {
+        // if ((olua_is_object(L, 1, "pugixml.xml_document")) && (olua_is_object(L, 2, "pugixml.xml_writer"))) {
             // void save(pugi::xml_writer &writer)
             return _olua_fun_pugi_xml_document_save$2(L);
         // }
     }
 
-    if (num_args == 2) {
-        // if ((olua_is_object(L, 2, "pugixml.xml_writer")) && (olua_is_string(L, 3))) {
+    if (num_args == 3) {
+        // if ((olua_is_object(L, 1, "pugixml.xml_document")) && (olua_is_object(L, 2, "pugixml.xml_writer")) && (olua_is_string(L, 3))) {
             // void save(pugi::xml_writer &writer, @optional const pugi::char_t *indent)
             return _olua_fun_pugi_xml_document_save$3(L);
         // }
     }
 
-    if (num_args == 3) {
-        // if ((olua_is_object(L, 2, "pugixml.xml_writer")) && (olua_is_string(L, 3)) && (olua_is_integer(L, 4))) {
+    if (num_args == 4) {
+        // if ((olua_is_object(L, 1, "pugixml.xml_document")) && (olua_is_object(L, 2, "pugixml.xml_writer")) && (olua_is_string(L, 3)) && (olua_is_integer(L, 4))) {
             // void save(pugi::xml_writer &writer, @optional const pugi::char_t *indent, @optional unsigned int flags)
             return _olua_fun_pugi_xml_document_save$4(L);
         // }
     }
 
-    if (num_args == 4) {
-        // if ((olua_is_object(L, 2, "pugixml.xml_writer")) && (olua_is_string(L, 3)) && (olua_is_integer(L, 4)) && (olua_is_enum(L, 5))) {
+    if (num_args == 5) {
+        // if ((olua_is_object(L, 1, "pugixml.xml_document")) && (olua_is_object(L, 2, "pugixml.xml_writer")) && (olua_is_string(L, 3)) && (olua_is_integer(L, 4)) && (olua_is_enum(L, 5))) {
             // void save(pugi::xml_writer &writer, @optional const pugi::char_t *indent, @optional unsigned int flags, @optional pugi::xml_encoding encoding)
             return _olua_fun_pugi_xml_document_save$1(L);
         // }
@@ -8782,31 +8964,31 @@ static int _olua_fun_pugi_xml_document_save_file$4(lua_State *L)
 
 static int _olua_fun_pugi_xml_document_save_file(lua_State *L)
 {
-    int num_args = lua_gettop(L) - 1;
+    int num_args = lua_gettop(L);
 
-    if (num_args == 1) {
-        // if ((olua_is_string(L, 2))) {
+    if (num_args == 2) {
+        // if ((olua_is_object(L, 1, "pugixml.xml_document")) && (olua_is_string(L, 2))) {
             // bool save_file(const char *path)
             return _olua_fun_pugi_xml_document_save_file$2(L);
         // }
     }
 
-    if (num_args == 2) {
-        // if ((olua_is_string(L, 2)) && (olua_is_string(L, 3))) {
+    if (num_args == 3) {
+        // if ((olua_is_object(L, 1, "pugixml.xml_document")) && (olua_is_string(L, 2)) && (olua_is_string(L, 3))) {
             // bool save_file(const char *path, @optional const pugi::char_t *indent)
             return _olua_fun_pugi_xml_document_save_file$3(L);
         // }
     }
 
-    if (num_args == 3) {
-        // if ((olua_is_string(L, 2)) && (olua_is_string(L, 3)) && (olua_is_integer(L, 4))) {
+    if (num_args == 4) {
+        // if ((olua_is_object(L, 1, "pugixml.xml_document")) && (olua_is_string(L, 2)) && (olua_is_string(L, 3)) && (olua_is_integer(L, 4))) {
             // bool save_file(const char *path, @optional const pugi::char_t *indent, @optional unsigned int flags)
             return _olua_fun_pugi_xml_document_save_file$4(L);
         // }
     }
 
-    if (num_args == 4) {
-        // if ((olua_is_string(L, 2)) && (olua_is_string(L, 3)) && (olua_is_integer(L, 4)) && (olua_is_enum(L, 5))) {
+    if (num_args == 5) {
+        // if ((olua_is_object(L, 1, "pugixml.xml_document")) && (olua_is_string(L, 2)) && (olua_is_string(L, 3)) && (olua_is_integer(L, 4)) && (olua_is_enum(L, 5))) {
             // bool save_file(const char *path, @optional const pugi::char_t *indent, @optional unsigned int flags, @optional pugi::xml_encoding encoding)
             return _olua_fun_pugi_xml_document_save_file$1(L);
         // }

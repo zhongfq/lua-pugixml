@@ -5,6 +5,11 @@
 ---@class pugixml.xpath_node 
 local xpath_node = {}
 
+---Comparison operators
+---@param n pugixml.xpath_node
+---@return boolean
+function xpath_node:__eq(n) end
+
 ---@return any
 function xpath_node:__gc() end
 
