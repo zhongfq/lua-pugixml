@@ -8,6 +8,258 @@
 
 static int _olua_module_pugixml(lua_State *L);
 
+static int _olua_fun_pugi_xml_object_range_pugi_xml_node_iterator___gc(lua_State *L)
+{
+    try {
+        olua_startinvoke(L);
+        auto self = (pugi::xml_object_range<pugi::xml_node_iterator> *)olua_toobj(L, 1, "pugixml.xml_object_range<pugixml.xml_node_iterator>");
+        olua_postgc(L, self);
+        olua_endinvoke(L);
+        return 0;
+    } catch (std::exception &e) {
+        lua_pushfstring(L, "pugi::xml_object_range<pugi::xml_node_iterator>::__gc(): %s", e.what());
+        luaL_error(L, olua_tostring(L, -1));
+        return 0;
+    }
+}
+
+static int _olua_fun_pugi_xml_object_range_pugi_xml_node_iterator___pairs(lua_State *L)
+{
+    try {
+        olua_startinvoke(L);
+        auto self = olua_toobj<pugi::xml_object_range<pugi::xml_node_iterator>>(L, 1);
+        int ret = olua_pairs<pugi::xml_object_range<pugi::xml_node_iterator>, pugi::xml_node_iterator>(L, self, false);
+        olua_endinvoke(L);
+        return ret;
+    } catch (std::exception &e) {
+        lua_pushfstring(L, "pugi::xml_object_range<pugi::xml_node_iterator>::__pairs(): %s", e.what());
+        luaL_error(L, olua_tostring(L, -1));
+        return 0;
+    }
+}
+
+static int _olua_cls_pugixml_xml_object_range_pugixml_xml_node_iterator(lua_State *L)
+{
+    oluacls_class<pugi::xml_object_range<pugi::xml_node_iterator>>(L, "pugixml.xml_object_range<pugixml.xml_node_iterator>");
+    oluacls_func(L, "__gc", _olua_fun_pugi_xml_object_range_pugi_xml_node_iterator___gc);
+    oluacls_func(L, "__pairs", _olua_fun_pugi_xml_object_range_pugi_xml_node_iterator___pairs);
+
+    return 1;
+}
+
+OLUA_BEGIN_DECLS
+OLUA_LIB int luaopen_pugixml_xml_object_range_pugixml_xml_node_iterator(lua_State *L)
+{
+    olua_require(L, ".olua.module.pugixml",  _olua_module_pugixml);
+    if (!olua_getclass(L, "pugixml.xml_object_range<pugixml.xml_node_iterator>")) {
+        luaL_error(L, "class not found: pugi::xml_object_range<pugi::xml_node_iterator>");
+    }
+    return 1;
+}
+OLUA_END_DECLS
+
+static int _olua_fun_pugi_xml_node_iterator___gc(lua_State *L)
+{
+    try {
+        olua_startinvoke(L);
+        auto self = (pugi::xml_node_iterator *)olua_toobj(L, 1, "pugixml.xml_node_iterator");
+        olua_postgc(L, self);
+        olua_endinvoke(L);
+        return 0;
+    } catch (std::exception &e) {
+        lua_pushfstring(L, "pugi::xml_node_iterator::__gc(): %s", e.what());
+        luaL_error(L, olua_tostring(L, -1));
+        return 0;
+    }
+}
+
+static int _olua_cls_pugixml_xml_node_iterator(lua_State *L)
+{
+    oluacls_class<pugi::xml_node_iterator>(L, "pugixml.xml_node_iterator");
+    oluacls_func(L, "__gc", _olua_fun_pugi_xml_node_iterator___gc);
+
+    return 1;
+}
+
+OLUA_BEGIN_DECLS
+OLUA_LIB int luaopen_pugixml_xml_node_iterator(lua_State *L)
+{
+    olua_require(L, ".olua.module.pugixml",  _olua_module_pugixml);
+    if (!olua_getclass(L, "pugixml.xml_node_iterator")) {
+        luaL_error(L, "class not found: pugi::xml_node_iterator");
+    }
+    return 1;
+}
+OLUA_END_DECLS
+
+static int _olua_fun_pugi_xml_object_range_pugi_xml_attribute_iterator___gc(lua_State *L)
+{
+    try {
+        olua_startinvoke(L);
+        auto self = (pugi::xml_object_range<pugi::xml_attribute_iterator> *)olua_toobj(L, 1, "pugixml.xml_object_range<pugixml.xml_attribute_iterator>");
+        olua_postgc(L, self);
+        olua_endinvoke(L);
+        return 0;
+    } catch (std::exception &e) {
+        lua_pushfstring(L, "pugi::xml_object_range<pugi::xml_attribute_iterator>::__gc(): %s", e.what());
+        luaL_error(L, olua_tostring(L, -1));
+        return 0;
+    }
+}
+
+static int _olua_fun_pugi_xml_object_range_pugi_xml_attribute_iterator___pairs(lua_State *L)
+{
+    try {
+        olua_startinvoke(L);
+        auto self = olua_toobj<pugi::xml_object_range<pugi::xml_attribute_iterator>>(L, 1);
+        int ret = olua_pairs<pugi::xml_object_range<pugi::xml_attribute_iterator>, pugi::xml_attribute_iterator>(L, self, false);
+        olua_endinvoke(L);
+        return ret;
+    } catch (std::exception &e) {
+        lua_pushfstring(L, "pugi::xml_object_range<pugi::xml_attribute_iterator>::__pairs(): %s", e.what());
+        luaL_error(L, olua_tostring(L, -1));
+        return 0;
+    }
+}
+
+static int _olua_cls_pugixml_xml_object_range_pugixml_xml_attribute_iterator(lua_State *L)
+{
+    oluacls_class<pugi::xml_object_range<pugi::xml_attribute_iterator>>(L, "pugixml.xml_object_range<pugixml.xml_attribute_iterator>");
+    oluacls_func(L, "__gc", _olua_fun_pugi_xml_object_range_pugi_xml_attribute_iterator___gc);
+    oluacls_func(L, "__pairs", _olua_fun_pugi_xml_object_range_pugi_xml_attribute_iterator___pairs);
+
+    return 1;
+}
+
+OLUA_BEGIN_DECLS
+OLUA_LIB int luaopen_pugixml_xml_object_range_pugixml_xml_attribute_iterator(lua_State *L)
+{
+    olua_require(L, ".olua.module.pugixml",  _olua_module_pugixml);
+    if (!olua_getclass(L, "pugixml.xml_object_range<pugixml.xml_attribute_iterator>")) {
+        luaL_error(L, "class not found: pugi::xml_object_range<pugi::xml_attribute_iterator>");
+    }
+    return 1;
+}
+OLUA_END_DECLS
+
+static int _olua_fun_pugi_xml_attribute_iterator___gc(lua_State *L)
+{
+    try {
+        olua_startinvoke(L);
+        auto self = (pugi::xml_attribute_iterator *)olua_toobj(L, 1, "pugixml.xml_attribute_iterator");
+        olua_postgc(L, self);
+        olua_endinvoke(L);
+        return 0;
+    } catch (std::exception &e) {
+        lua_pushfstring(L, "pugi::xml_attribute_iterator::__gc(): %s", e.what());
+        luaL_error(L, olua_tostring(L, -1));
+        return 0;
+    }
+}
+
+static int _olua_cls_pugixml_xml_attribute_iterator(lua_State *L)
+{
+    oluacls_class<pugi::xml_attribute_iterator>(L, "pugixml.xml_attribute_iterator");
+    oluacls_func(L, "__gc", _olua_fun_pugi_xml_attribute_iterator___gc);
+
+    return 1;
+}
+
+OLUA_BEGIN_DECLS
+OLUA_LIB int luaopen_pugixml_xml_attribute_iterator(lua_State *L)
+{
+    olua_require(L, ".olua.module.pugixml",  _olua_module_pugixml);
+    if (!olua_getclass(L, "pugixml.xml_attribute_iterator")) {
+        luaL_error(L, "class not found: pugi::xml_attribute_iterator");
+    }
+    return 1;
+}
+OLUA_END_DECLS
+
+static int _olua_fun_pugi_xml_object_range_pugi_xml_named_node_iterator___gc(lua_State *L)
+{
+    try {
+        olua_startinvoke(L);
+        auto self = (pugi::xml_object_range<pugi::xml_named_node_iterator> *)olua_toobj(L, 1, "pugixml.xml_object_range<pugixml.xml_named_node_iterator>");
+        olua_postgc(L, self);
+        olua_endinvoke(L);
+        return 0;
+    } catch (std::exception &e) {
+        lua_pushfstring(L, "pugi::xml_object_range<pugi::xml_named_node_iterator>::__gc(): %s", e.what());
+        luaL_error(L, olua_tostring(L, -1));
+        return 0;
+    }
+}
+
+static int _olua_fun_pugi_xml_object_range_pugi_xml_named_node_iterator___pairs(lua_State *L)
+{
+    try {
+        olua_startinvoke(L);
+        auto self = olua_toobj<pugi::xml_object_range<pugi::xml_named_node_iterator>>(L, 1);
+        int ret = olua_pairs<pugi::xml_object_range<pugi::xml_named_node_iterator>, pugi::xml_named_node_iterator>(L, self, false);
+        olua_endinvoke(L);
+        return ret;
+    } catch (std::exception &e) {
+        lua_pushfstring(L, "pugi::xml_object_range<pugi::xml_named_node_iterator>::__pairs(): %s", e.what());
+        luaL_error(L, olua_tostring(L, -1));
+        return 0;
+    }
+}
+
+static int _olua_cls_pugixml_xml_object_range_pugixml_xml_named_node_iterator(lua_State *L)
+{
+    oluacls_class<pugi::xml_object_range<pugi::xml_named_node_iterator>>(L, "pugixml.xml_object_range<pugixml.xml_named_node_iterator>");
+    oluacls_func(L, "__gc", _olua_fun_pugi_xml_object_range_pugi_xml_named_node_iterator___gc);
+    oluacls_func(L, "__pairs", _olua_fun_pugi_xml_object_range_pugi_xml_named_node_iterator___pairs);
+
+    return 1;
+}
+
+OLUA_BEGIN_DECLS
+OLUA_LIB int luaopen_pugixml_xml_object_range_pugixml_xml_named_node_iterator(lua_State *L)
+{
+    olua_require(L, ".olua.module.pugixml",  _olua_module_pugixml);
+    if (!olua_getclass(L, "pugixml.xml_object_range<pugixml.xml_named_node_iterator>")) {
+        luaL_error(L, "class not found: pugi::xml_object_range<pugi::xml_named_node_iterator>");
+    }
+    return 1;
+}
+OLUA_END_DECLS
+
+static int _olua_fun_pugi_xml_named_node_iterator___gc(lua_State *L)
+{
+    try {
+        olua_startinvoke(L);
+        auto self = (pugi::xml_named_node_iterator *)olua_toobj(L, 1, "pugixml.xml_named_node_iterator");
+        olua_postgc(L, self);
+        olua_endinvoke(L);
+        return 0;
+    } catch (std::exception &e) {
+        lua_pushfstring(L, "pugi::xml_named_node_iterator::__gc(): %s", e.what());
+        luaL_error(L, olua_tostring(L, -1));
+        return 0;
+    }
+}
+
+static int _olua_cls_pugixml_xml_named_node_iterator(lua_State *L)
+{
+    oluacls_class<pugi::xml_named_node_iterator>(L, "pugixml.xml_named_node_iterator");
+    oluacls_func(L, "__gc", _olua_fun_pugi_xml_named_node_iterator___gc);
+
+    return 1;
+}
+
+OLUA_BEGIN_DECLS
+OLUA_LIB int luaopen_pugixml_xml_named_node_iterator(lua_State *L)
+{
+    olua_require(L, ".olua.module.pugixml",  _olua_module_pugixml);
+    if (!olua_getclass(L, "pugixml.xml_named_node_iterator")) {
+        luaL_error(L, "class not found: pugi::xml_named_node_iterator");
+    }
+    return 1;
+}
+OLUA_END_DECLS
+
 static int _olua_cls_pugixml_xpath_value_type(lua_State *L)
 {
     oluacls_class<pugi::xpath_value_type>(L, "pugixml.xpath_value_type");
@@ -25,7 +277,7 @@ static int _olua_cls_pugixml_xpath_value_type(lua_State *L)
 OLUA_BEGIN_DECLS
 OLUA_LIB int luaopen_pugixml_xpath_value_type(lua_State *L)
 {
-    olua_require(L, "pugixml",  _olua_module_pugixml);
+    olua_require(L, ".olua.module.pugixml",  _olua_module_pugixml);
     if (!olua_getclass(L, "pugixml.xpath_value_type")) {
         luaL_error(L, "class not found: pugi::xpath_value_type");
     }
@@ -48,7 +300,7 @@ static int _olua_cls_pugixml_xpath_node_set_type_t(lua_State *L)
 OLUA_BEGIN_DECLS
 OLUA_LIB int luaopen_pugixml_xpath_node_set_type_t(lua_State *L)
 {
-    olua_require(L, "pugixml",  _olua_module_pugixml);
+    olua_require(L, ".olua.module.pugixml",  _olua_module_pugixml);
     if (!olua_getclass(L, "pugixml.xpath_node_set.type_t")) {
         luaL_error(L, "class not found: pugi::xpath_node_set::type_t");
     }
@@ -58,14 +310,17 @@ OLUA_END_DECLS
 
 static int _olua_fun_pugi_xpath_query___gc(lua_State *L)
 {
-    olua_startinvoke(L);
-
-    auto self = (pugi::xpath_query *)olua_toobj(L, 1, "pugixml.xpath_query");
-    olua_postgc(L, self);
-
-    olua_endinvoke(L);
-
-    return 0;
+    try {
+        olua_startinvoke(L);
+        auto self = (pugi::xpath_query *)olua_toobj(L, 1, "pugixml.xpath_query");
+        olua_postgc(L, self);
+        olua_endinvoke(L);
+        return 0;
+    } catch (std::exception &e) {
+        lua_pushfstring(L, "pugi::xpath_query::__gc(): %s", e.what());
+        luaL_error(L, olua_tostring(L, -1));
+        return 0;
+    }
 }
 
 static int _olua_fun_pugi_xpath_query_evaluate_boolean(lua_State *L)
@@ -408,7 +663,7 @@ static int _olua_cls_pugixml_xpath_query(lua_State *L)
 OLUA_BEGIN_DECLS
 OLUA_LIB int luaopen_pugixml_xpath_query(lua_State *L)
 {
-    olua_require(L, "pugixml",  _olua_module_pugixml);
+    olua_require(L, ".olua.module.pugixml",  _olua_module_pugixml);
     if (!olua_getclass(L, "pugixml.xpath_query")) {
         luaL_error(L, "class not found: pugi::xpath_query");
     }
@@ -443,14 +698,17 @@ static int _olua_fun_pugi_xpath_node___eq(lua_State *L)
 
 static int _olua_fun_pugi_xpath_node___gc(lua_State *L)
 {
-    olua_startinvoke(L);
-
-    auto self = (pugi::xpath_node *)olua_toobj(L, 1, "pugixml.xpath_node");
-    olua_postgc(L, self);
-
-    olua_endinvoke(L);
-
-    return 0;
+    try {
+        olua_startinvoke(L);
+        auto self = (pugi::xpath_node *)olua_toobj(L, 1, "pugixml.xpath_node");
+        olua_postgc(L, self);
+        olua_endinvoke(L);
+        return 0;
+    } catch (std::exception &e) {
+        lua_pushfstring(L, "pugi::xpath_node::__gc(): %s", e.what());
+        luaL_error(L, olua_tostring(L, -1));
+        return 0;
+    }
 }
 
 static int _olua_fun_pugi_xpath_node_attribute(lua_State *L)
@@ -636,7 +894,7 @@ static int _olua_cls_pugixml_xpath_node(lua_State *L)
 OLUA_BEGIN_DECLS
 OLUA_LIB int luaopen_pugixml_xpath_node(lua_State *L)
 {
-    olua_require(L, "pugixml",  _olua_module_pugixml);
+    olua_require(L, ".olua.module.pugixml",  _olua_module_pugixml);
     if (!olua_getclass(L, "pugixml.xpath_node")) {
         luaL_error(L, "class not found: pugi::xpath_node");
     }
@@ -646,14 +904,17 @@ OLUA_END_DECLS
 
 static int _olua_fun_pugi_xpath_parse_result___gc(lua_State *L)
 {
-    olua_startinvoke(L);
-
-    auto self = (pugi::xpath_parse_result *)olua_toobj(L, 1, "pugixml.xpath_parse_result");
-    olua_postgc(L, self);
-
-    olua_endinvoke(L);
-
-    return 0;
+    try {
+        olua_startinvoke(L);
+        auto self = (pugi::xpath_parse_result *)olua_toobj(L, 1, "pugixml.xpath_parse_result");
+        olua_postgc(L, self);
+        olua_endinvoke(L);
+        return 0;
+    } catch (std::exception &e) {
+        lua_pushfstring(L, "pugi::xpath_parse_result::__gc(): %s", e.what());
+        luaL_error(L, olua_tostring(L, -1));
+        return 0;
+    }
 }
 
 static int _olua_fun_pugi_xpath_parse_result_description(lua_State *L)
@@ -850,7 +1111,7 @@ static int _olua_cls_pugixml_xpath_parse_result(lua_State *L)
 OLUA_BEGIN_DECLS
 OLUA_LIB int luaopen_pugixml_xpath_parse_result(lua_State *L)
 {
-    olua_require(L, "pugixml",  _olua_module_pugixml);
+    olua_require(L, ".olua.module.pugixml",  _olua_module_pugixml);
     if (!olua_getclass(L, "pugixml.xpath_parse_result")) {
         luaL_error(L, "class not found: pugi::xpath_parse_result");
     }
@@ -860,14 +1121,17 @@ OLUA_END_DECLS
 
 static int _olua_fun_pugi_xpath_node_set___gc(lua_State *L)
 {
-    olua_startinvoke(L);
-
-    auto self = (pugi::xpath_node_set *)olua_toobj(L, 1, "pugixml.xpath_node_set");
-    olua_postgc(L, self);
-
-    olua_endinvoke(L);
-
-    return 0;
+    try {
+        olua_startinvoke(L);
+        auto self = (pugi::xpath_node_set *)olua_toobj(L, 1, "pugixml.xpath_node_set");
+        olua_postgc(L, self);
+        olua_endinvoke(L);
+        return 0;
+    } catch (std::exception &e) {
+        lua_pushfstring(L, "pugi::xpath_node_set::__gc(): %s", e.what());
+        luaL_error(L, olua_tostring(L, -1));
+        return 0;
+    }
 }
 
 static int _olua_fun_pugi_xpath_node_set_empty(lua_State *L)
@@ -1066,7 +1330,7 @@ static int _olua_cls_pugixml_xpath_node_set(lua_State *L)
 OLUA_BEGIN_DECLS
 OLUA_LIB int luaopen_pugixml_xpath_node_set(lua_State *L)
 {
-    olua_require(L, "pugixml",  _olua_module_pugixml);
+    olua_require(L, ".olua.module.pugixml",  _olua_module_pugixml);
     if (!olua_getclass(L, "pugixml.xpath_node_set")) {
         luaL_error(L, "class not found: pugi::xpath_node_set");
     }
@@ -1076,14 +1340,17 @@ OLUA_END_DECLS
 
 static int _olua_fun_pugi_xpath_variable_set___gc(lua_State *L)
 {
-    olua_startinvoke(L);
-
-    auto self = (pugi::xpath_variable_set *)olua_toobj(L, 1, "pugixml.xpath_variable_set");
-    olua_postgc(L, self);
-
-    olua_endinvoke(L);
-
-    return 0;
+    try {
+        olua_startinvoke(L);
+        auto self = (pugi::xpath_variable_set *)olua_toobj(L, 1, "pugixml.xpath_variable_set");
+        olua_postgc(L, self);
+        olua_endinvoke(L);
+        return 0;
+    } catch (std::exception &e) {
+        lua_pushfstring(L, "pugi::xpath_variable_set::__gc(): %s", e.what());
+        luaL_error(L, olua_tostring(L, -1));
+        return 0;
+    }
 }
 
 static int _olua_fun_pugi_xpath_variable_set_add(lua_State *L)
@@ -1312,7 +1579,7 @@ static int _olua_cls_pugixml_xpath_variable_set(lua_State *L)
 OLUA_BEGIN_DECLS
 OLUA_LIB int luaopen_pugixml_xpath_variable_set(lua_State *L)
 {
-    olua_require(L, "pugixml",  _olua_module_pugixml);
+    olua_require(L, ".olua.module.pugixml",  _olua_module_pugixml);
     if (!olua_getclass(L, "pugixml.xpath_variable_set")) {
         luaL_error(L, "class not found: pugi::xpath_variable_set");
     }
@@ -1322,14 +1589,17 @@ OLUA_END_DECLS
 
 static int _olua_fun_pugi_xpath_variable___gc(lua_State *L)
 {
-    olua_startinvoke(L);
-
-    auto self = (pugi::xpath_variable *)olua_toobj(L, 1, "pugixml.xpath_variable");
-    olua_postgc(L, self);
-
-    olua_endinvoke(L);
-
-    return 0;
+    try {
+        olua_startinvoke(L);
+        auto self = (pugi::xpath_variable *)olua_toobj(L, 1, "pugixml.xpath_variable");
+        olua_postgc(L, self);
+        olua_endinvoke(L);
+        return 0;
+    } catch (std::exception &e) {
+        lua_pushfstring(L, "pugi::xpath_variable::__gc(): %s", e.what());
+        luaL_error(L, olua_tostring(L, -1));
+        return 0;
+    }
 }
 
 static int _olua_fun_pugi_xpath_variable_get_boolean(lua_State *L)
@@ -1623,7 +1893,7 @@ static int _olua_cls_pugixml_xpath_variable(lua_State *L)
 OLUA_BEGIN_DECLS
 OLUA_LIB int luaopen_pugixml_xpath_variable(lua_State *L)
 {
-    olua_require(L, "pugixml",  _olua_module_pugixml);
+    olua_require(L, ".olua.module.pugixml",  _olua_module_pugixml);
     if (!olua_getclass(L, "pugixml.xpath_variable")) {
         luaL_error(L, "class not found: pugi::xpath_variable");
     }
@@ -1652,7 +1922,7 @@ static int _olua_cls_pugixml_xml_node_type(lua_State *L)
 OLUA_BEGIN_DECLS
 OLUA_LIB int luaopen_pugixml_xml_node_type(lua_State *L)
 {
-    olua_require(L, "pugixml",  _olua_module_pugixml);
+    olua_require(L, ".olua.module.pugixml",  _olua_module_pugixml);
     if (!olua_getclass(L, "pugixml.xml_node_type")) {
         luaL_error(L, "class not found: pugi::xml_node_type");
     }
@@ -1682,7 +1952,7 @@ static int _olua_cls_pugixml_xml_encoding(lua_State *L)
 OLUA_BEGIN_DECLS
 OLUA_LIB int luaopen_pugixml_xml_encoding(lua_State *L)
 {
-    olua_require(L, "pugixml",  _olua_module_pugixml);
+    olua_require(L, ".olua.module.pugixml",  _olua_module_pugixml);
     if (!olua_getclass(L, "pugixml.xml_encoding")) {
         luaL_error(L, "class not found: pugi::xml_encoding");
     }
@@ -1719,7 +1989,7 @@ static int _olua_cls_pugixml_xml_parse_status(lua_State *L)
 OLUA_BEGIN_DECLS
 OLUA_LIB int luaopen_pugixml_xml_parse_status(lua_State *L)
 {
-    olua_require(L, "pugixml",  _olua_module_pugixml);
+    olua_require(L, ".olua.module.pugixml",  _olua_module_pugixml);
     if (!olua_getclass(L, "pugixml.xml_parse_status")) {
         luaL_error(L, "class not found: pugi::xml_parse_status");
     }
@@ -1729,14 +1999,17 @@ OLUA_END_DECLS
 
 static int _olua_fun_pugi_xml_parse_result___gc(lua_State *L)
 {
-    olua_startinvoke(L);
-
-    auto self = (pugi::xml_parse_result *)olua_toobj(L, 1, "pugixml.xml_parse_result");
-    olua_postgc(L, self);
-
-    olua_endinvoke(L);
-
-    return 0;
+    try {
+        olua_startinvoke(L);
+        auto self = (pugi::xml_parse_result *)olua_toobj(L, 1, "pugixml.xml_parse_result");
+        olua_postgc(L, self);
+        olua_endinvoke(L);
+        return 0;
+    } catch (std::exception &e) {
+        lua_pushfstring(L, "pugi::xml_parse_result::__gc(): %s", e.what());
+        luaL_error(L, olua_tostring(L, -1));
+        return 0;
+    }
 }
 
 static int _olua_fun_pugi_xml_parse_result_description(lua_State *L)
@@ -2002,7 +2275,7 @@ static int _olua_cls_pugixml_xml_parse_result(lua_State *L)
 OLUA_BEGIN_DECLS
 OLUA_LIB int luaopen_pugixml_xml_parse_result(lua_State *L)
 {
-    olua_require(L, "pugixml",  _olua_module_pugixml);
+    olua_require(L, ".olua.module.pugixml",  _olua_module_pugixml);
     if (!olua_getclass(L, "pugixml.xml_parse_result")) {
         luaL_error(L, "class not found: pugi::xml_parse_result");
     }
@@ -2037,14 +2310,17 @@ static int _olua_fun_pugi_xml_attribute___eq(lua_State *L)
 
 static int _olua_fun_pugi_xml_attribute___gc(lua_State *L)
 {
-    olua_startinvoke(L);
-
-    auto self = (pugi::xml_attribute *)olua_toobj(L, 1, "pugixml.xml_attribute");
-    olua_postgc(L, self);
-
-    olua_endinvoke(L);
-
-    return 0;
+    try {
+        olua_startinvoke(L);
+        auto self = (pugi::xml_attribute *)olua_toobj(L, 1, "pugixml.xml_attribute");
+        olua_postgc(L, self);
+        olua_endinvoke(L);
+        return 0;
+    } catch (std::exception &e) {
+        lua_pushfstring(L, "pugi::xml_attribute::__gc(): %s", e.what());
+        luaL_error(L, olua_tostring(L, -1));
+        return 0;
+    }
 }
 
 static int _olua_fun_pugi_xml_attribute___le(lua_State *L)
@@ -3330,7 +3606,7 @@ static int _olua_cls_pugixml_xml_attribute(lua_State *L)
 OLUA_BEGIN_DECLS
 OLUA_LIB int luaopen_pugixml_xml_attribute(lua_State *L)
 {
-    olua_require(L, "pugixml",  _olua_module_pugixml);
+    olua_require(L, ".olua.module.pugixml",  _olua_module_pugixml);
     if (!olua_getclass(L, "pugixml.xml_attribute")) {
         luaL_error(L, "class not found: pugi::xml_attribute");
     }
@@ -3340,14 +3616,17 @@ OLUA_END_DECLS
 
 static int _olua_fun_pugi_xml_tree_walker___gc(lua_State *L)
 {
-    olua_startinvoke(L);
-
-    auto self = (pugi::xml_tree_walker *)olua_toobj(L, 1, "pugixml.xml_tree_walker");
-    olua_postgc(L, self);
-
-    olua_endinvoke(L);
-
-    return 0;
+    try {
+        olua_startinvoke(L);
+        auto self = (pugi::xml_tree_walker *)olua_toobj(L, 1, "pugixml.xml_tree_walker");
+        olua_postgc(L, self);
+        olua_endinvoke(L);
+        return 0;
+    } catch (std::exception &e) {
+        lua_pushfstring(L, "pugi::xml_tree_walker::__gc(): %s", e.what());
+        luaL_error(L, olua_tostring(L, -1));
+        return 0;
+    }
 }
 
 static int _olua_fun_pugi_xml_tree_walker_begin(lua_State *L)
@@ -3439,7 +3718,7 @@ static int _olua_cls_pugixml_xml_tree_walker(lua_State *L)
 OLUA_BEGIN_DECLS
 OLUA_LIB int luaopen_pugixml_xml_tree_walker(lua_State *L)
 {
-    olua_require(L, "pugixml",  _olua_module_pugixml);
+    olua_require(L, ".olua.module.pugixml",  _olua_module_pugixml);
     if (!olua_getclass(L, "pugixml.xml_tree_walker")) {
         luaL_error(L, "class not found: pugi::xml_tree_walker");
     }
@@ -3808,7 +4087,7 @@ static int _olua_cls_pugixml_lua_xml_tree_walker(lua_State *L)
 OLUA_BEGIN_DECLS
 OLUA_LIB int luaopen_pugixml_lua_xml_tree_walker(lua_State *L)
 {
-    olua_require(L, "pugixml",  _olua_module_pugixml);
+    olua_require(L, ".olua.module.pugixml",  _olua_module_pugixml);
     if (!olua_getclass(L, "pugixml.lua_xml_tree_walker")) {
         luaL_error(L, "class not found: pugi::lua_xml_tree_walker");
     }
@@ -3818,14 +4097,17 @@ OLUA_END_DECLS
 
 static int _olua_fun_pugi_xml_writer___gc(lua_State *L)
 {
-    olua_startinvoke(L);
-
-    auto self = (pugi::xml_writer *)olua_toobj(L, 1, "pugixml.xml_writer");
-    olua_postgc(L, self);
-
-    olua_endinvoke(L);
-
-    return 0;
+    try {
+        olua_startinvoke(L);
+        auto self = (pugi::xml_writer *)olua_toobj(L, 1, "pugixml.xml_writer");
+        olua_postgc(L, self);
+        olua_endinvoke(L);
+        return 0;
+    } catch (std::exception &e) {
+        lua_pushfstring(L, "pugi::xml_writer::__gc(): %s", e.what());
+        luaL_error(L, olua_tostring(L, -1));
+        return 0;
+    }
 }
 
 static int _olua_fun_pugi_xml_writer_write(lua_State *L)
@@ -3866,7 +4148,7 @@ static int _olua_cls_pugixml_xml_writer(lua_State *L)
 OLUA_BEGIN_DECLS
 OLUA_LIB int luaopen_pugixml_xml_writer(lua_State *L)
 {
-    olua_require(L, "pugixml",  _olua_module_pugixml);
+    olua_require(L, ".olua.module.pugixml",  _olua_module_pugixml);
     if (!olua_getclass(L, "pugixml.xml_writer")) {
         luaL_error(L, "class not found: pugi::xml_writer");
     }
@@ -3909,7 +4191,7 @@ static int _olua_cls_pugixml_xml_writer_file(lua_State *L)
 OLUA_BEGIN_DECLS
 OLUA_LIB int luaopen_pugixml_xml_writer_file(lua_State *L)
 {
-    olua_require(L, "pugixml",  _olua_module_pugixml);
+    olua_require(L, ".olua.module.pugixml",  _olua_module_pugixml);
     if (!olua_getclass(L, "pugixml.xml_writer_file")) {
         luaL_error(L, "class not found: pugi::xml_writer_file");
     }
@@ -4048,7 +4330,7 @@ static int _olua_cls_pugixml_lua_xml_writer(lua_State *L)
 OLUA_BEGIN_DECLS
 OLUA_LIB int luaopen_pugixml_lua_xml_writer(lua_State *L)
 {
-    olua_require(L, "pugixml",  _olua_module_pugixml);
+    olua_require(L, ".olua.module.pugixml",  _olua_module_pugixml);
     if (!olua_getclass(L, "pugixml.lua_xml_writer")) {
         luaL_error(L, "class not found: pugi::lua_xml_writer");
     }
@@ -4058,14 +4340,17 @@ OLUA_END_DECLS
 
 static int _olua_fun_pugi_xml_text___gc(lua_State *L)
 {
-    olua_startinvoke(L);
-
-    auto self = (pugi::xml_text *)olua_toobj(L, 1, "pugixml.xml_text");
-    olua_postgc(L, self);
-
-    olua_endinvoke(L);
-
-    return 0;
+    try {
+        olua_startinvoke(L);
+        auto self = (pugi::xml_text *)olua_toobj(L, 1, "pugixml.xml_text");
+        olua_postgc(L, self);
+        olua_endinvoke(L);
+        return 0;
+    } catch (std::exception &e) {
+        lua_pushfstring(L, "pugi::xml_text::__gc(): %s", e.what());
+        luaL_error(L, olua_tostring(L, -1));
+        return 0;
+    }
 }
 
 static int _olua_fun_pugi_xml_text_as_bool$1(lua_State *L)
@@ -5150,7 +5435,7 @@ static int _olua_cls_pugixml_xml_text(lua_State *L)
 OLUA_BEGIN_DECLS
 OLUA_LIB int luaopen_pugixml_xml_text(lua_State *L)
 {
-    olua_require(L, "pugixml",  _olua_module_pugixml);
+    olua_require(L, ".olua.module.pugixml",  _olua_module_pugixml);
     if (!olua_getclass(L, "pugixml.xml_text")) {
         luaL_error(L, "class not found: pugi::xml_text");
     }
@@ -5185,14 +5470,17 @@ static int _olua_fun_pugi_xml_node___eq(lua_State *L)
 
 static int _olua_fun_pugi_xml_node___gc(lua_State *L)
 {
-    olua_startinvoke(L);
-
-    auto self = (pugi::xml_node *)olua_toobj(L, 1, "pugixml.xml_node");
-    olua_postgc(L, self);
-
-    olua_endinvoke(L);
-
-    return 0;
+    try {
+        olua_startinvoke(L);
+        auto self = (pugi::xml_node *)olua_toobj(L, 1, "pugixml.xml_node");
+        olua_postgc(L, self);
+        olua_endinvoke(L);
+        return 0;
+    } catch (std::exception &e) {
+        lua_pushfstring(L, "pugi::xml_node::__gc(): %s", e.what());
+        luaL_error(L, olua_tostring(L, -1));
+        return 0;
+    }
 }
 
 static int _olua_fun_pugi_xml_node___le(lua_State *L)
@@ -5240,6 +5528,21 @@ static int _olua_fun_pugi_xml_node___lt(lua_State *L)
         return num_ret;
     } catch (std::exception &e) {
         lua_pushfstring(L, "pugi::xml_node::__lt(): %s", e.what());
+        luaL_error(L, olua_tostring(L, -1));
+        return 0;
+    }
+}
+
+static int _olua_fun_pugi_xml_node___pairs(lua_State *L)
+{
+    try {
+        olua_startinvoke(L);
+        auto self = olua_toobj<pugi::xml_node>(L, 1);
+        int ret = olua_pairs<pugi::xml_node, pugi::xml_node::iterator>(L, self, false);
+        olua_endinvoke(L);
+        return ret;
+    } catch (std::exception &e) {
+        lua_pushfstring(L, "pugi::xml_node::__pairs(): %s", e.what());
         luaL_error(L, olua_tostring(L, -1));
         return 0;
     }
@@ -5657,6 +5960,75 @@ static int _olua_fun_pugi_xml_node_attribute(lua_State *L)
     return 0;
 }
 
+static int _olua_fun_pugi_xml_node_attributes(lua_State *L)
+{
+    try {
+        olua_startinvoke(L);
+
+        pugi::xml_node *self = nullptr;
+
+        olua_to_object(L, 1, &self, "pugixml.xml_node");
+
+        // pugi::xml_object_range<pugi::xml_attribute_iterator> attributes()
+        pugi::xml_object_range<pugi::xml_attribute_iterator> ret = self->attributes();
+        int num_ret = olua_copy_object(L, ret, "pugixml.xml_object_range<pugixml.xml_attribute_iterator>");
+
+        olua_endinvoke(L);
+
+        return num_ret;
+    } catch (std::exception &e) {
+        lua_pushfstring(L, "pugi::xml_node::attributes(): %s", e.what());
+        luaL_error(L, olua_tostring(L, -1));
+        return 0;
+    }
+}
+
+static int _olua_fun_pugi_xml_node_attributes_begin(lua_State *L)
+{
+    try {
+        olua_startinvoke(L);
+
+        pugi::xml_node *self = nullptr;
+
+        olua_to_object(L, 1, &self, "pugixml.xml_node");
+
+        // pugi::xml_node::attribute_iterator attributes_begin()
+        pugi::xml_node::attribute_iterator ret = self->attributes_begin();
+        int num_ret = olua_copy_object(L, ret, "pugixml.xml_attribute_iterator");
+
+        olua_endinvoke(L);
+
+        return num_ret;
+    } catch (std::exception &e) {
+        lua_pushfstring(L, "pugi::xml_node::attributes_begin(): %s", e.what());
+        luaL_error(L, olua_tostring(L, -1));
+        return 0;
+    }
+}
+
+static int _olua_fun_pugi_xml_node_attributes_end(lua_State *L)
+{
+    try {
+        olua_startinvoke(L);
+
+        pugi::xml_node *self = nullptr;
+
+        olua_to_object(L, 1, &self, "pugixml.xml_node");
+
+        // pugi::xml_node::attribute_iterator attributes_end()
+        pugi::xml_node::attribute_iterator ret = self->attributes_end();
+        int num_ret = olua_copy_object(L, ret, "pugixml.xml_attribute_iterator");
+
+        olua_endinvoke(L);
+
+        return num_ret;
+    } catch (std::exception &e) {
+        lua_pushfstring(L, "pugi::xml_node::attributes_end(): %s", e.what());
+        luaL_error(L, olua_tostring(L, -1));
+        return 0;
+    }
+}
+
 static int _olua_fun_pugi_xml_node_child(lua_State *L)
 {
     try {
@@ -5747,6 +6119,75 @@ static int _olua_fun_pugi_xml_node_child_value(lua_State *L)
     }
 
     luaL_error(L, "method 'pugi::xml_node::child_value' not support '%d' arguments", num_args);
+
+    return 0;
+}
+
+static int _olua_fun_pugi_xml_node_children$1(lua_State *L)
+{
+    try {
+        olua_startinvoke(L);
+
+        pugi::xml_node *self = nullptr;
+
+        olua_to_object(L, 1, &self, "pugixml.xml_node");
+
+        // pugi::xml_object_range<pugi::xml_node_iterator> children()
+        pugi::xml_object_range<pugi::xml_node_iterator> ret = self->children();
+        int num_ret = olua_copy_object(L, ret, "pugixml.xml_object_range<pugixml.xml_node_iterator>");
+
+        olua_endinvoke(L);
+
+        return num_ret;
+    } catch (std::exception &e) {
+        lua_pushfstring(L, "pugi::xml_node::children(): %s", e.what());
+        luaL_error(L, olua_tostring(L, -1));
+        return 0;
+    }
+}
+
+static int _olua_fun_pugi_xml_node_children$2(lua_State *L)
+{
+    try {
+        olua_startinvoke(L);
+
+        pugi::xml_node *self = nullptr;
+        const pugi::char_t *arg1 = nullptr;       /** name */
+
+        olua_to_object(L, 1, &self, "pugixml.xml_node");
+        olua_check_string(L, 2, &arg1);
+
+        // pugi::xml_object_range<pugi::xml_named_node_iterator> children(const pugi::char_t *name)
+        pugi::xml_object_range<pugi::xml_named_node_iterator> ret = self->children(arg1);
+        int num_ret = olua_copy_object(L, ret, "pugixml.xml_object_range<pugixml.xml_named_node_iterator>");
+
+        olua_endinvoke(L);
+
+        return num_ret;
+    } catch (std::exception &e) {
+        lua_pushfstring(L, "pugi::xml_node::children(): %s", e.what());
+        luaL_error(L, olua_tostring(L, -1));
+        return 0;
+    }
+}
+
+static int _olua_fun_pugi_xml_node_children(lua_State *L)
+{
+    int num_args = lua_gettop(L);
+
+    if (num_args == 1) {
+        // pugi::xml_object_range<pugi::xml_node_iterator> children()
+        return _olua_fun_pugi_xml_node_children$1(L);
+    }
+
+    if (num_args == 2) {
+        // if ((olua_is_object(L, 1, "pugixml.xml_node")) && (olua_is_string(L, 2))) {
+            // pugi::xml_object_range<pugi::xml_named_node_iterator> children(const pugi::char_t *name)
+            return _olua_fun_pugi_xml_node_children$2(L);
+        // }
+    }
+
+    luaL_error(L, "method 'pugi::xml_node::children' not support '%d' arguments", num_args);
 
     return 0;
 }
@@ -7991,14 +8432,19 @@ static int _olua_cls_pugixml_xml_node(lua_State *L)
     oluacls_func(L, "__gc", _olua_fun_pugi_xml_node___gc);
     oluacls_func(L, "__le", _olua_fun_pugi_xml_node___le);
     oluacls_func(L, "__lt", _olua_fun_pugi_xml_node___lt);
+    oluacls_func(L, "__pairs", _olua_fun_pugi_xml_node___pairs);
     oluacls_func(L, "append_attribute", _olua_fun_pugi_xml_node_append_attribute);
     oluacls_func(L, "append_buffer", _olua_fun_pugi_xml_node_append_buffer);
     oluacls_func(L, "append_child", _olua_fun_pugi_xml_node_append_child);
     oluacls_func(L, "append_copy", _olua_fun_pugi_xml_node_append_copy);
     oluacls_func(L, "append_move", _olua_fun_pugi_xml_node_append_move);
     oluacls_func(L, "attribute", _olua_fun_pugi_xml_node_attribute);
+    oluacls_func(L, "attributes", _olua_fun_pugi_xml_node_attributes);
+    oluacls_func(L, "attributes_begin", _olua_fun_pugi_xml_node_attributes_begin);
+    oluacls_func(L, "attributes_end", _olua_fun_pugi_xml_node_attributes_end);
     oluacls_func(L, "child", _olua_fun_pugi_xml_node_child);
     oluacls_func(L, "child_value", _olua_fun_pugi_xml_node_child_value);
+    oluacls_func(L, "children", _olua_fun_pugi_xml_node_children);
     oluacls_func(L, "empty", _olua_fun_pugi_xml_node_empty);
     oluacls_func(L, "find_attribute", _olua_fun_pugi_xml_node_find_attribute);
     oluacls_func(L, "find_child", _olua_fun_pugi_xml_node_find_child);
@@ -8050,7 +8496,7 @@ static int _olua_cls_pugixml_xml_node(lua_State *L)
 OLUA_BEGIN_DECLS
 OLUA_LIB int luaopen_pugixml_xml_node(lua_State *L)
 {
-    olua_require(L, "pugixml",  _olua_module_pugixml);
+    olua_require(L, ".olua.module.pugixml",  _olua_module_pugixml);
     if (!olua_getclass(L, "pugixml.xml_node")) {
         luaL_error(L, "class not found: pugi::xml_node");
     }
@@ -9019,7 +9465,7 @@ static int _olua_cls_pugixml_xml_document(lua_State *L)
 OLUA_BEGIN_DECLS
 OLUA_LIB int luaopen_pugixml_xml_document(lua_State *L)
 {
-    olua_require(L, "pugixml",  _olua_module_pugixml);
+    olua_require(L, ".olua.module.pugixml",  _olua_module_pugixml);
     if (!olua_getclass(L, "pugixml.xml_document")) {
         luaL_error(L, "class not found: pugi::xml_document");
     }
@@ -9029,6 +9475,12 @@ OLUA_END_DECLS
 
 int _olua_module_pugixml(lua_State *L)
 {
+    olua_require(L, "pugixml.xml_object_range<pugixml.xml_node_iterator>", _olua_cls_pugixml_xml_object_range_pugixml_xml_node_iterator);
+    olua_require(L, "pugixml.xml_node_iterator", _olua_cls_pugixml_xml_node_iterator);
+    olua_require(L, "pugixml.xml_object_range<pugixml.xml_attribute_iterator>", _olua_cls_pugixml_xml_object_range_pugixml_xml_attribute_iterator);
+    olua_require(L, "pugixml.xml_attribute_iterator", _olua_cls_pugixml_xml_attribute_iterator);
+    olua_require(L, "pugixml.xml_object_range<pugixml.xml_named_node_iterator>", _olua_cls_pugixml_xml_object_range_pugixml_xml_named_node_iterator);
+    olua_require(L, "pugixml.xml_named_node_iterator", _olua_cls_pugixml_xml_named_node_iterator);
     olua_require(L, "pugixml.xpath_value_type", _olua_cls_pugixml_xpath_value_type);
     olua_require(L, "pugixml.xpath_node_set.type_t", _olua_cls_pugixml_xpath_node_set_type_t);
     olua_require(L, "pugixml.xpath_query", _olua_cls_pugixml_xpath_query);
@@ -9057,7 +9509,7 @@ int _olua_module_pugixml(lua_State *L)
 OLUA_BEGIN_DECLS
 OLUA_LIB int luaopen_pugixml(lua_State *L)
 {
-    olua_require(L, "pugixml",  _olua_module_pugixml);
+    olua_require(L, ".olua.module.pugixml",  _olua_module_pugixml);
 
     if (olua_getclass(L, "pugixml.xml_document")) {
         return 1;

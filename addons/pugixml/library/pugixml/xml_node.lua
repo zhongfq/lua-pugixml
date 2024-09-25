@@ -21,6 +21,9 @@ function xml_node:__le(r) end
 ---@return boolean
 function xml_node:__lt(r) end
 
+---@return any
+function xml_node:__pairs() end
+
 ---Add attribute with specified name. Returns added attribute, or empty attribute on errors.
 ---@param name string
 ---@return pugixml.xml_attribute
@@ -67,6 +70,15 @@ function xml_node:append_move(moved) end
 ---@overload fun(self: pugixml.xml_node, name: string, hint: pugixml.xml_attribute): pugixml.xml_attribute
 function xml_node:attribute(name) end
 
+---@return pugixml.xml_object_range<pugixml.xml_attribute_iterator>
+function xml_node:attributes() end
+
+---@return pugixml.xml_attribute_iterator
+function xml_node:attributes_begin() end
+
+---@return pugixml.xml_attribute_iterator
+function xml_node:attributes_end() end
+
 ---Get child, attribute or next/previous sibling with the specified name
 ---@param name string
 ---@return pugixml.xml_node
@@ -78,6 +90,14 @@ function xml_node:child(name) end
 ---Get child value of child with specified name. Equivalent to child(name).child_value().
 ---@overload fun(self: pugixml.xml_node, name: string): string
 function xml_node:child_value() end
+
+---Range-based for support
+---@return pugixml.xml_object_range<pugixml.xml_node_iterator>
+---
+---Range-based for support for all children with the specified name
+---Note: name pointer must have a longer lifetime than the returned object; be careful with passing temporaries!
+---@overload fun(self: pugixml.xml_node, name: string): pugixml.xml_object_range<pugixml.xml_named_node_iterator>
+function xml_node:children() end
 
 ---Check if node is empty (null)
 ---@return boolean

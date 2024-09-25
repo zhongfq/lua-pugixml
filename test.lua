@@ -37,3 +37,23 @@ writer.on_write = function (arg1)
 end
 
 xml:save(writer, "  ")
+
+--- iterator
+print("## iterator")
+for _, v in pairs(xml:child("styleSheet"):children()) do
+    ---@cast v pugixml.xml_node
+    print("##iterator children:", v, v:name())
+end
+
+for _, v in pairs(xml:child("styleSheet"):children("fonts")) do
+    ---@cast v pugixml.xml_node
+    print("##iterator fonts:", v, v:name())
+    for _, vv in pairs(v) do
+        ---@cast vv pugixml.xml_node
+        print("##iterator fonts.children:", vv, vv:name())
+    end
+end
+
+for _, v in pairs(xml:child("styleSheet"):attributes()) do
+    print("@@iterator attributes:", v, v:name(), v:value())
+end
