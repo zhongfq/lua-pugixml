@@ -12,7 +12,7 @@ static int _olua_fun_pugi_xml_object_range_pugi_xml_node_iterator___gc(lua_State
 {
     try {
         olua_startinvoke(L);
-        auto self = (pugi::xml_object_range<pugi::xml_node_iterator> *)olua_toobj(L, 1, "pugixml.xml_object_range<pugixml.xml_node_iterator>");
+        auto self = (pugi::xml_object_range<pugi::xml_node_iterator> *)olua_toobj(L, 1, "pugixml.xml_object_range_pugixml_xml_node_iterator");
         olua_postgc(L, self);
         olua_endinvoke(L);
         return 0;
@@ -40,7 +40,7 @@ static int _olua_fun_pugi_xml_object_range_pugi_xml_node_iterator___pairs(lua_St
 
 static int _olua_cls_pugixml_xml_object_range_pugixml_xml_node_iterator(lua_State *L)
 {
-    oluacls_class<pugi::xml_object_range<pugi::xml_node_iterator>>(L, "pugixml.xml_object_range<pugixml.xml_node_iterator>");
+    oluacls_class<pugi::xml_object_range<pugi::xml_node_iterator>>(L, "pugixml.xml_object_range_pugixml_xml_node_iterator");
     oluacls_func(L, "__gc", _olua_fun_pugi_xml_object_range_pugi_xml_node_iterator___gc);
     oluacls_func(L, "__pairs", _olua_fun_pugi_xml_object_range_pugi_xml_node_iterator___pairs);
 
@@ -51,7 +51,7 @@ OLUA_BEGIN_DECLS
 OLUA_LIB int luaopen_pugixml_xml_object_range_pugixml_xml_node_iterator(lua_State *L)
 {
     olua_require(L, ".olua.module.pugixml",  _olua_module_pugixml);
-    if (!olua_getclass(L, "pugixml.xml_object_range<pugixml.xml_node_iterator>")) {
+    if (!olua_getclass(L, "pugixml.xml_object_range_pugixml_xml_node_iterator")) {
         luaL_error(L, "class not found: pugi::xml_object_range<pugi::xml_node_iterator>");
     }
     return 1;
@@ -96,7 +96,7 @@ static int _olua_fun_pugi_xml_object_range_pugi_xml_attribute_iterator___gc(lua_
 {
     try {
         olua_startinvoke(L);
-        auto self = (pugi::xml_object_range<pugi::xml_attribute_iterator> *)olua_toobj(L, 1, "pugixml.xml_object_range<pugixml.xml_attribute_iterator>");
+        auto self = (pugi::xml_object_range<pugi::xml_attribute_iterator> *)olua_toobj(L, 1, "pugixml.xml_object_range_pugixml_xml_attribute_iterator");
         olua_postgc(L, self);
         olua_endinvoke(L);
         return 0;
@@ -124,7 +124,7 @@ static int _olua_fun_pugi_xml_object_range_pugi_xml_attribute_iterator___pairs(l
 
 static int _olua_cls_pugixml_xml_object_range_pugixml_xml_attribute_iterator(lua_State *L)
 {
-    oluacls_class<pugi::xml_object_range<pugi::xml_attribute_iterator>>(L, "pugixml.xml_object_range<pugixml.xml_attribute_iterator>");
+    oluacls_class<pugi::xml_object_range<pugi::xml_attribute_iterator>>(L, "pugixml.xml_object_range_pugixml_xml_attribute_iterator");
     oluacls_func(L, "__gc", _olua_fun_pugi_xml_object_range_pugi_xml_attribute_iterator___gc);
     oluacls_func(L, "__pairs", _olua_fun_pugi_xml_object_range_pugi_xml_attribute_iterator___pairs);
 
@@ -135,7 +135,7 @@ OLUA_BEGIN_DECLS
 OLUA_LIB int luaopen_pugixml_xml_object_range_pugixml_xml_attribute_iterator(lua_State *L)
 {
     olua_require(L, ".olua.module.pugixml",  _olua_module_pugixml);
-    if (!olua_getclass(L, "pugixml.xml_object_range<pugixml.xml_attribute_iterator>")) {
+    if (!olua_getclass(L, "pugixml.xml_object_range_pugixml_xml_attribute_iterator")) {
         luaL_error(L, "class not found: pugi::xml_object_range<pugi::xml_attribute_iterator>");
     }
     return 1;
@@ -180,7 +180,7 @@ static int _olua_fun_pugi_xml_object_range_pugi_xml_named_node_iterator___gc(lua
 {
     try {
         olua_startinvoke(L);
-        auto self = (pugi::xml_object_range<pugi::xml_named_node_iterator> *)olua_toobj(L, 1, "pugixml.xml_object_range<pugixml.xml_named_node_iterator>");
+        auto self = (pugi::xml_object_range<pugi::xml_named_node_iterator> *)olua_toobj(L, 1, "pugixml.xml_object_range_pugixml_xml_named_node_iterator");
         olua_postgc(L, self);
         olua_endinvoke(L);
         return 0;
@@ -208,7 +208,7 @@ static int _olua_fun_pugi_xml_object_range_pugi_xml_named_node_iterator___pairs(
 
 static int _olua_cls_pugixml_xml_object_range_pugixml_xml_named_node_iterator(lua_State *L)
 {
-    oluacls_class<pugi::xml_object_range<pugi::xml_named_node_iterator>>(L, "pugixml.xml_object_range<pugixml.xml_named_node_iterator>");
+    oluacls_class<pugi::xml_object_range<pugi::xml_named_node_iterator>>(L, "pugixml.xml_object_range_pugixml_xml_named_node_iterator");
     oluacls_func(L, "__gc", _olua_fun_pugi_xml_object_range_pugi_xml_named_node_iterator___gc);
     oluacls_func(L, "__pairs", _olua_fun_pugi_xml_object_range_pugi_xml_named_node_iterator___pairs);
 
@@ -219,7 +219,7 @@ OLUA_BEGIN_DECLS
 OLUA_LIB int luaopen_pugixml_xml_object_range_pugixml_xml_named_node_iterator(lua_State *L)
 {
     olua_require(L, ".olua.module.pugixml",  _olua_module_pugixml);
-    if (!olua_getclass(L, "pugixml.xml_object_range<pugixml.xml_named_node_iterator>")) {
+    if (!olua_getclass(L, "pugixml.xml_object_range_pugixml_xml_named_node_iterator")) {
         luaL_error(L, "class not found: pugi::xml_object_range<pugi::xml_named_node_iterator>");
     }
     return 1;
@@ -5971,7 +5971,7 @@ static int _olua_fun_pugi_xml_node_attributes(lua_State *L)
 
         // pugi::xml_object_range<pugi::xml_attribute_iterator> attributes()
         pugi::xml_object_range<pugi::xml_attribute_iterator> ret = self->attributes();
-        int num_ret = olua_copy_object(L, ret, "pugixml.xml_object_range<pugixml.xml_attribute_iterator>");
+        int num_ret = olua_copy_object(L, ret, "pugixml.xml_object_range_pugixml_xml_attribute_iterator");
 
         olua_endinvoke(L);
 
@@ -6134,7 +6134,7 @@ static int _olua_fun_pugi_xml_node_children$1(lua_State *L)
 
         // pugi::xml_object_range<pugi::xml_node_iterator> children()
         pugi::xml_object_range<pugi::xml_node_iterator> ret = self->children();
-        int num_ret = olua_copy_object(L, ret, "pugixml.xml_object_range<pugixml.xml_node_iterator>");
+        int num_ret = olua_copy_object(L, ret, "pugixml.xml_object_range_pugixml_xml_node_iterator");
 
         olua_endinvoke(L);
 
@@ -6159,7 +6159,7 @@ static int _olua_fun_pugi_xml_node_children$2(lua_State *L)
 
         // pugi::xml_object_range<pugi::xml_named_node_iterator> children(const pugi::char_t *name)
         pugi::xml_object_range<pugi::xml_named_node_iterator> ret = self->children(arg1);
-        int num_ret = olua_copy_object(L, ret, "pugixml.xml_object_range<pugixml.xml_named_node_iterator>");
+        int num_ret = olua_copy_object(L, ret, "pugixml.xml_object_range_pugixml_xml_named_node_iterator");
 
         olua_endinvoke(L);
 
@@ -9475,11 +9475,11 @@ OLUA_END_DECLS
 
 int _olua_module_pugixml(lua_State *L)
 {
-    olua_require(L, "pugixml.xml_object_range<pugixml.xml_node_iterator>", _olua_cls_pugixml_xml_object_range_pugixml_xml_node_iterator);
+    olua_require(L, "pugixml.xml_object_range_pugixml_xml_node_iterator", _olua_cls_pugixml_xml_object_range_pugixml_xml_node_iterator);
     olua_require(L, "pugixml.xml_node_iterator", _olua_cls_pugixml_xml_node_iterator);
-    olua_require(L, "pugixml.xml_object_range<pugixml.xml_attribute_iterator>", _olua_cls_pugixml_xml_object_range_pugixml_xml_attribute_iterator);
+    olua_require(L, "pugixml.xml_object_range_pugixml_xml_attribute_iterator", _olua_cls_pugixml_xml_object_range_pugixml_xml_attribute_iterator);
     olua_require(L, "pugixml.xml_attribute_iterator", _olua_cls_pugixml_xml_attribute_iterator);
-    olua_require(L, "pugixml.xml_object_range<pugixml.xml_named_node_iterator>", _olua_cls_pugixml_xml_object_range_pugixml_xml_named_node_iterator);
+    olua_require(L, "pugixml.xml_object_range_pugixml_xml_named_node_iterator", _olua_cls_pugixml_xml_object_range_pugixml_xml_named_node_iterator);
     olua_require(L, "pugixml.xml_named_node_iterator", _olua_cls_pugixml_xml_named_node_iterator);
     olua_require(L, "pugixml.xpath_value_type", _olua_cls_pugixml_xpath_value_type);
     olua_require(L, "pugixml.xpath_node_set.type_t", _olua_cls_pugixml_xpath_node_set_type_t);

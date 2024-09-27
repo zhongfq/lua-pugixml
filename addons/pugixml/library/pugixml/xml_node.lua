@@ -70,7 +70,7 @@ function xml_node:append_move(moved) end
 ---@overload fun(self: pugixml.xml_node, name: string, hint: pugixml.xml_attribute): pugixml.xml_attribute
 function xml_node:attribute(name) end
 
----@return pugixml.xml_object_range<pugixml.xml_attribute_iterator>
+---@return pugixml.xml_object_range_pugixml_xml_attribute_iterator
 function xml_node:attributes() end
 
 ---@return pugixml.xml_attribute_iterator
@@ -92,11 +92,11 @@ function xml_node:child(name) end
 function xml_node:child_value() end
 
 ---Range-based for support
----@return pugixml.xml_object_range<pugixml.xml_node_iterator>
+---@return pugixml.xml_object_range_pugixml_xml_node_iterator
 ---
 ---Range-based for support for all children with the specified name
 ---Note: name pointer must have a longer lifetime than the returned object; be careful with passing temporaries!
----@overload fun(self: pugixml.xml_node, name: string): pugixml.xml_object_range<pugixml.xml_named_node_iterator>
+---@overload fun(self: pugixml.xml_node, name: string): pugixml.xml_object_range_pugixml_xml_named_node_iterator
 function xml_node:children() end
 
 ---Check if node is empty (null)

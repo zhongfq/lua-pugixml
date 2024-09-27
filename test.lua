@@ -57,3 +57,6 @@ end
 for _, v in pairs(xml:child("styleSheet"):attributes()) do
     print("@@iterator attributes:", v, v:name(), v:value())
 end
+
+local tr = xml:child("styleSheet"):attributes()
+print(tr.__pairs)
